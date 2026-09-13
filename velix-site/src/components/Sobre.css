@@ -1,10 +1,15 @@
 .sobre {
   position: relative;
   width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
   overflow: hidden;
   background: #ffffff;
   padding: 70px 0 90px;
   scroll-margin-top: 76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sobre__bgwrap {

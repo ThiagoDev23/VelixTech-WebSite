@@ -1,70 +1,53 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 789px;
+  height: 100vh;
   overflow: hidden;
   background: rgb(30, 30, 30);
   scroll-margin-top: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Lock the section to the design's own aspect ratio once it's wider than the
-   design (1400px). Without this, object-fit:cover on a proportionally wider
-   box reveals the video's own dark vignetted edges instead of just cropping
-   its sides the way the 1400px-wide design always did. */
-@media (min-width: 1400px) {
-  .hero {
-    aspect-ratio: 1400 / 789;
-    min-height: 0;
-    height: auto;
-  }
 }
 
 .hero__video {
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 1400px;
   height: 100%;
   opacity: 0.4;
   object-fit: cover;
   pointer-events: none;
 }
 
-.hero__content {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
-  padding: 140px 24px 0;
-  text-align: center;
-}
-
+/* Exact original relative position: title top 255px / subtitle top 490px
+   out of a 789px-tall design canvas (32.32% / 62.11%). */
 .hero__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 32.32%;
   margin: 0;
+  padding: 0 24px;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  font-size: clamp(38px, 6.5vw, 98.23px);
+  font-size: clamp(32px, 6.5vw, 98.23px);
   line-height: 1.02;
   letter-spacing: -0.04em;
   color: #ffffff;
+  text-align: center;
 }
 
 .hero__subtitle {
-  margin: 28px auto 0;
-  max-width: 491px;
-  font-size: clamp(14px, 1.6vw, 17.86px);
+  position: absolute;
+  left: 50%;
+  top: 62.11%;
+  transform: translateX(-50%);
+  width: min(491px, 90%);
+  margin: 0;
+  font-size: clamp(13px, 1.6vw, 17.86px);
   font-weight: 500;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.75);
-}
-
-@media (max-width: 640px) {
-  .hero {
-    min-height: 620px;
-  }
-
-  .hero__content {
-    padding-top: 110px;
-  }
+  text-align: center;
 }
