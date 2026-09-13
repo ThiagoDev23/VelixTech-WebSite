@@ -13,7 +13,12 @@
 
 .portfolio__bgwrap {
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
   overflow: hidden;
   background: #ffffff;
 }

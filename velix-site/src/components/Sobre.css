@@ -7,15 +7,25 @@
   scroll-margin-top: 76px;
 }
 
+.sobre__bgwrap {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .sobre__bg {
   position: absolute;
-  left: -4%;
-  top: -6%;
-  width: 108%;
-  height: auto;
-  min-height: 112%;
-  object-fit: cover;
-  pointer-events: none;
+  left: -83px;
+  top: -49px;
+  width: 1818px;
+  height: 841px;
+  max-width: none;
   user-select: none;
 }
 

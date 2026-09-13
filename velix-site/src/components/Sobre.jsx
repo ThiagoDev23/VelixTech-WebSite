@@ -37,7 +37,9 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
 
   return (
     <section ref={ref} id="sobre" className="sobre">
-      <img src={tracosBg} alt="" className="sobre__bg" aria-hidden="true" />
+      <div className="sobre__bgwrap">
+        <img src={tracosBg} alt="" className="sobre__bg" aria-hidden="true" />
+      </div>
 
       <div className="sobre__inner">
         <div className="sobre__cards">

@@ -13,20 +13,12 @@
   max-width: 1400px;
   height: 100%;
   margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 48px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
+/* Exact coordinates from the original design canvas (1400px reference width). */
 .navbar__brand {
   position: absolute;
-  left: clamp(16px, 4vw, 48px);
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  top: 4.3px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 320ms ease;
@@ -37,23 +29,52 @@
   pointer-events: auto;
 }
 
+.navbar__brand--dark {
+  left: 13px;
+}
+
+.navbar__brand--light {
+  left: 1px;
+}
+
 .navbar__logo {
-  width: 52px;
-  height: 52px;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-position: center;
-  background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
-  flex-shrink: 0;
+}
+
+.navbar__logo--dark {
+  width: 60px;
+  height: 76px;
+  background-size: cover;
+}
+
+.navbar__logo--light {
+  width: 76px;
+  height: 76px;
+  background-size: contain;
 }
 
 .navbar__wordmark {
-  font-size: clamp(16px, 2.2vw, 24px);
+  position: absolute;
+  top: 19.7px; /* 24px from navbar top - 4.3px brand offset */
+  font-size: 24px;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 29px;
   letter-spacing: 0.17em;
   cursor: pointer;
   white-space: nowrap;
+}
+
+.navbar__brand--dark .navbar__wordmark {
+  left: 53px;
+}
+
+.navbar__brand--light .navbar__wordmark {
+  left: 63px;
 }
 
 .navbar__wordmark--dark {
@@ -65,15 +86,16 @@
 }
 
 .navbar__links {
-  position: relative;
-  margin-left: auto;
+  position: absolute;
+  left: 512px;
+  top: 30px;
   display: flex;
-  gap: clamp(16px, 3vw, 50px);
+  gap: 50px;
   align-items: center;
 }
 
 .navbar__links span {
-  font-size: clamp(11px, 1.4vw, 14px);
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
@@ -96,7 +118,49 @@
   color: #8b3fbf;
 }
 
-@media (max-width: 480px) {
+/* Below the design's own canvas width, the fixed offsets above would push
+   the links off-screen, so switch to a compact fluid layout. */
+@media (max-width: 700px) {
+  .navbar__inner {
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__brand {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .navbar__logo--dark,
+  .navbar__logo--light {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+  }
+
+  .navbar__wordmark {
+    position: static;
+    font-size: 16px;
+  }
+
+  .navbar__links {
+    position: static;
+    margin-left: auto;
+    gap: 16px;
+  }
+
+  .navbar__links span {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 420px) {
   .navbar__wordmark {
     display: none;
   }

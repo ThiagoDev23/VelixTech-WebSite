@@ -10,6 +10,18 @@
   justify-content: center;
 }
 
+/* Lock the section to the design's own aspect ratio once it's wider than the
+   design (1400px). Without this, object-fit:cover on a proportionally wider
+   box reveals the video's own dark vignetted edges instead of just cropping
+   its sides the way the 1400px-wide design always did. */
+@media (min-width: 1400px) {
+  .hero {
+    aspect-ratio: 1400 / 789;
+    min-height: 0;
+    height: auto;
+  }
+}
+
 .hero__video {
   position: absolute;
   inset: 0;
