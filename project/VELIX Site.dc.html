@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0d0d0d; }
+  * { box-sizing: border-box; }
+  a { color: #400E58; text-decoration: none; }
+  a:hover { color: #7a2bad; }
+  input, textarea { font-family: Inter, sans-serif; }
+  input::placeholder, textarea::placeholder { color: rgb(90,90,90); }
+</style>
+</helmet>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div ref="{{ rootRef }}" style="position:relative;width:1400px;height:2424px;margin:0 auto;overflow:hidden;background:#ffffff;font-family:Inter,sans-serif">
+
+  <!-- ═══ NAVBAR FIXA ═══ -->
+  <div style="position:fixed;left:{{ navLeft }}px;top:0;width:1400px;height:76px;z-index:60;background:{{ navBg }};box-shadow:{{ navShadow }};transition:background 320ms ease, box-shadow 320ms ease">
+    <div style="position:absolute;left:0;top:0;width:1400px;height:76px;opacity:{{ darkOpacity }};pointer-events:{{ darkPE }};transition:opacity 320ms ease">
+      <div style="position:absolute;left:13px;top:0;width:891px;height:76px">
+        <div onClick="{{ toTop }}" style="position:absolute;left:0;top:4.3px;width:60px;height:76px;background:url(assets/logo-icon-white-330.png) center / cover no-repeat;cursor:pointer"></div>
+        <span onClick="{{ toTop }}" style="position:absolute;left:53px;top:24px;font-size:24px;font-weight:800;line-height:29px;letter-spacing:0.17em;color:#ffffff;cursor:pointer">ＶＥＬＩＸ</span>
+        <div style="position:absolute;left:499px;top:30px;display:flex;gap:50px;align-items:center">
+          <span onClick="{{ toTop }}" style="font-size:14px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="color:#b98cd6">HOME</span>
+          <span onClick="{{ toSobre }}" style="font-size:14px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="color:#b98cd6">SOBRE</span>
+          <span onClick="{{ toPortfolio }}" style="font-size:14px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="color:#b98cd6">PORTFOLIO</span>
+          <span onClick="{{ toContato }}" style="font-size:14px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="color:#b98cd6">CONTATO</span>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;left:0;top:0;width:1400px;height:76px;opacity:{{ lightOpacity }};pointer-events:{{ lightPE }};transition:opacity 320ms ease">
+      <div style="position:absolute;left:1px;top:0;width:903px;height:76px">
+        <div onClick="{{ toTop }}" style="position:absolute;left:0;top:4.3px;width:76px;height:76px;background:url(assets/logo-icon-purple-330.png) center / contain no-repeat;cursor:pointer"></div>
+        <span onClick="{{ toTop }}" style="position:absolute;left:63px;top:24px;font-size:24px;font-weight:800;line-height:29px;letter-spacing:0.17em;color:rgb(64,14,88);cursor:pointer">ＶＥＬＩＸ</span>
+        <div style="position:absolute;left:511px;top:30px;display:flex;gap:50px;align-items:center">
+          <span onClick="{{ toTop }}" style="font-size:14px;font-weight:700;color:rgb(64,14,88);cursor:pointer" style-hover="color:#8b3fbf">HOME</span>
+          <span onClick="{{ toSobre }}" style="font-size:14px;font-weight:700;color:rgb(64,14,88);cursor:pointer" style-hover="color:#8b3fbf">SOBRE</span>
+          <span onClick="{{ toPortfolio }}" style="font-size:14px;font-weight:700;color:rgb(64,14,88);cursor:pointer" style-hover="color:#8b3fbf">PORTFOLIO</span>
+          <span onClick="{{ toContato }}" style="font-size:14px;font-weight:700;color:rgb(64,14,88);cursor:pointer" style-hover="color:#8b3fbf">CONTATO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <div data-screen-label="Hero" style="position:absolute;left:0;top:0;width:1400px;height:789px;overflow:hidden;background:rgb(30,30,30)">
+    <video src="assets/hero-bg.mp4" autoplay="" muted="" loop="" playsinline="" poster="assets/hero-bg.png" style="position:absolute;left:0;top:-4px;width:1400px;height:795px;opacity:0.4;object-fit:cover;pointer-events:none"></video>
+
+    <div style="position:absolute;left:0;top:255px;width:1400px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:98.23px;line-height:93px;letter-spacing:-3.96px;color:#ffffff">
+      <div>Soluções Tecnológicas</div>
+      <div>para empresas.</div>
+    </div>
+
+    <div style="position:absolute;left:454px;top:490px;width:491px;text-align:center;font-size:17.86px;font-weight:500;line-height:22.5px;color:rgba(255,255,255,0.75)">Faça seu website construindo experiência para o próximo nível e aumente sua produtividade.</div>
+
+  </div>
+
+  <!-- ═══ SOBRE / SERVIÇOS ═══ -->
+  <div data-screen-label="Sobre" style="position:absolute;left:0;top:789px;width:1400px;height:807px;overflow:hidden;background:#ffffff">
+    <div style="position:absolute;left:-83px;top:-49px;width:1818px;height:841px;overflow:hidden;pointer-events:none">
+      <img src="assets/tracos-bg.png" alt="" style="position:absolute;left:0;top:0;width:1818px;height:841px" />
+    </div>
+
+    <div style="position:absolute;left:831px;top:111px;width:361px;height:640px;border-radius:20px;background:url(assets/office.jpg) center / cover no-repeat"></div>
+
+    <!-- card 1 -->
+    <div onClick="{{ toggle0 }}" style="position:absolute;left:195px;top:111px;width:605px;height:145px;overflow:hidden;border-radius:10px;background:rgb(217,217,217);cursor:pointer;transition:background 180ms ease" style-hover="background:rgb(185,185,185)">
+      <div style="position:absolute;left:13px;top:7px;width:421px;height:21.926px;background:url(assets/window-dots.png) 0% 50% / 112.354% 100% no-repeat"></div>
+      <span style="position:absolute;left:67px;top:24px;font-size:18px;font-weight:600;line-height:1;color:#000">Quem somos ?</span>
+      <span style="position:absolute;left:11px;top:56px;width:581px;text-align:center;font-size:24px;font-weight:500;font-style:italic;line-height:1.15;color:#000">Somos a <span style="font-weight:500;font-style:normal;color:#400E58">ＶＥＬＩＸ</span>, construímos tecnologia para impulsionar negócios.</span>
+      <sc-if value="{{ expandable }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:0;top:0;width:605px;height:145px;border-radius:10px;background:rgb(64,14,88);opacity:{{ op0 }};pointer-events:none;transition:opacity 260ms ease;display:flex;align-items:flex-end;padding:56px 36px 10px">
+        <div style="position:absolute;left:13px;top:7px;width:421px;height:21.926px;background:url(assets/window-dots.png) 0% 50% / 112.354% 100% no-repeat"></div>
+        <span style="font-size:13.5px;font-weight:600;line-height:1.42;color:#ffffff;text-wrap:pretty">Uma startup focada no desenvolvimento de soluções tecnológicas para o crescimento de diferentes empresas. Criamos websites, modelos SaaS, automações e soluções digitais personalizadas e escaláveis para o seu negócio, unindo tecnologia e inovação dentro de um ecossistema feito para gerar eficiência, performance e principalmente crescimento para nossos clientes.</span>
+      </div>
+      </sc-if>
+    </div>
+
+    <!-- card 2 -->
+    <div onClick="{{ toggle1 }}" style="position:absolute;left:195px;top:276px;width:605px;height:145px;overflow:hidden;border-radius:10px;background:rgb(217,217,217);cursor:pointer;transition:background 180ms ease" style-hover="background:rgb(185,185,185)">
+      <div style="position:absolute;left:13px;top:7px;width:421px;height:21.926px;background:url(assets/window-dots.png) 0% 50% / 112.354% 100% no-repeat"></div>
+      <span style="position:absolute;left:67px;top:28px;font-size:18px;font-weight:600;line-height:1;color:#000">Web site service</span>
+      <span style="position:absolute;left:11px;top:60px;width:581px;text-align:center;font-size:24px;font-weight:500;font-style:italic;line-height:1.15;color:#000">Uma Landing page para transformar de uma vez por todas seu negócio no digital.</span>
+      <sc-if value="{{ expandable }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:0;top:0;width:605px;height:145px;border-radius:10px;background:rgb(64,14,88);opacity:{{ op1 }};pointer-events:none;transition:opacity 260ms ease;display:flex;align-items:center;padding:26px 22px 18px">
+        <div style="position:absolute;left:13px;top:7px;width:421px;height:21.926px;background:url(assets/window-dots.png) 0% 50% / 112.354% 100% no-repeat"></div>
+        <span style="font-size:15px;font-weight:600;line-height:1.35;color:#ffffff;text-wrap:pretty">Desenvolvemos landing pages estratégicas e personalizadas para empresas que buscam fortalecer sua presença digital, apresentar seus serviços e transformar visitantes em novos clientes.</span>
+      </div>
+      </sc-if>
+    </div>
+
+    <!-- card 3 -->
+    <div onClick="{{ toggle2 }}" style="position:absolute;left:195px;top:441px;width:605px;height:145px;overflow:hidden;border-radius:10px;background:rgb(217,217,217);cursor:pointer;transition:background 180ms ease" style-hover="background:rgb(185,185,185)">
+      <div style="position:absolute;left:13px;top:7px;width:421px;height:21.926px;background:url(assets/window-dots.png) 0% 50% / 112.354% 100% no-repeat"></div>
+      <span style="position:absolute;left:67px;top:29px;font-size:18px;font-weight:600;line-height:1;color:#000">SaaS service</span>
+      <span style="position:absolute;left:11px;top:61px;width:581px;text-align:center;font-size:24px;font-weight:500;font-style:italic;line-height:1.15;color:#000">Sistemas via assinatura para alavancar seu negócio.</span>
+      <sc-if value="{{ expandable }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:0;top:0;width:605px;height:145px;border-radius:10px;background:rgb(64,14,88);opacity:{{ op2 }};pointer-events:none;transition:opacity 260ms ease;display:flex;align-items:center;padding:26px 22px 18px">
+        <div style="position:absolute;left:13px;top:7px;width:421px;height:21.926px;background:url(assets/window-dots.png) 0% 50% / 112.354% 100% no-repeat"></div>
+        <span style="font-size:15px;font-weight:600;line-height:1.35;color:#ffffff;text-wrap:pretty">Desenvolvemos sistemas SaaS personalizados, sistemas voltados para empresas que buscam otimizar processos e transformar necessidades em soluções tecnológicas acessíveis e eficientes. Por meio de uma assinatura, ofereça acesso a ferramentas e plataformas completas para seus clientes.</span>
+      </div>
+      </sc-if>
+    </div>
+
+    <!-- card 4 -->
+    <div onClick="{{ toggle3 }}" style="position:absolute;left:195px;top:606px;width:605px;height:145px;overflow:hidden;border-radius:10px;background:rgb(217,217,217);cursor:pointer;transition:background 180ms ease" style-hover="background:rgb(185,185,185)">
+      <div style="position:absolute;left:13px;top:7px;width:421px;height:21.926px;background:url(assets/window-dots.png) 0% 50% / 112.354% 100% no-repeat"></div>
+      <span style="position:absolute;left:67px;top:24px;font-size:18px;font-weight:600;line-height:1;color:#000">Gestão de Trafego</span>
+      <span style="position:absolute;left:11px;top:56px;width:581px;text-align:center;font-size:24px;font-weight:500;font-style:italic;line-height:1.15;color:#000">Trafego pago para levar os resultados da sua empresa para outro nível.</span>
+      <sc-if value="{{ expandable }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:0;top:0;width:605px;height:145px;border-radius:10px;background:rgb(64,14,88);opacity:{{ op3 }};pointer-events:none;transition:opacity 260ms ease;display:flex;align-items:center;padding:26px 22px 18px">
+        <div style="position:absolute;left:13px;top:7px;width:421px;height:21.926px;background:url(assets/window-dots.png) 0% 50% / 112.354% 100% no-repeat"></div>
+        <span style="font-size:15px;font-weight:600;line-height:1.35;color:#ffffff;text-wrap:pretty">Criamos campanhas personalizadas e orientadas por dados, utilizando plataformas de anúncios para levar sua empresa até pessoas com maior potencial de se tornarem clientes, unindo estratégia, análise e otimização contínua para gerar mais alcance, performance e principalmente resultados.</span>
+      </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- ═══ CONTATO ═══ -->
+  <div data-screen-label="Contato" style="position:absolute;left:0;top:1596px;width:1400px;height:760px;overflow:hidden;background:rgb(20,4,28)">
+    <div style="position:absolute;left:0;top:0;width:1400px;height:760px;background:url(assets/contact-bg.png) 38.4% 50% / cover no-repeat"></div>
+
+    <div style="position:absolute;left:252px;top:94px;width:897px;display:flex;flex-direction:column;gap:8px;align-items:center">
+      <span style="font-size:44px;font-weight:700;line-height:1.2;letter-spacing:-0.03em;text-align:center;color:rgb(243,243,243)">Fale Conosco!</span>
+      <span style="font-size:14px;font-weight:700;line-height:1.2;text-align:center;color:rgb(243,243,243)">Tem uma ideia ou um desafio?<br />Envie uma mensagem e descubra como a VELIX pode transformar seu projeto em resultados.</span>
+    </div>
+
+    <!-- coluna esquerda -->
+    <div style="position:absolute;left:346px;top:213px;width:300px;display:flex;flex-direction:column">
+      <span style="font-size:32px;font-weight:500;line-height:1.4;color:#ffffff">Contato</span>
+      <span style="margin-top:20px;font-size:20px;font-weight:500;line-height:1.4;color:#ffffff">Email:</span>
+      <span style="margin-top:16px;font-size:14px;font-weight:700;line-height:1.4;color:#ffffff">velixtech.ceo@gmail.com</span>
+      <span style="margin-top:20px;font-size:20px;font-weight:500;line-height:1.4;color:#ffffff">Telefone:</span>
+      <span style="margin-top:8px;font-size:14px;font-weight:700;line-height:1.4;color:#ffffff">+55 (61) 98255-4750</span>
+      <span style="margin-top:22px;width:290px;text-align:center;font-size:20px;font-weight:500;line-height:1.4;color:#ffffff">Se preferir, chame direto no WhatsApp.</span>
+    </div>
+
+    <a href="https://wa.link/zni9fc" target="_blank" rel="noopener noreferrer" style="position:absolute;left:347px;top:504px;width:291px;height:49px;display:flex;align-items:center;justify-content:center;gap:14px;border-radius:10px;background:rgb(0,63,22);border:2px solid rgb(99,255,33);text-decoration:none;transition:transform 160ms ease, box-shadow 160ms ease" style-hover="transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,255,33,0.25)">
+      <span style="width:28.913px;height:29.087px;background:url(assets/whatsapp.png) center / contain no-repeat"></span>
+      <span style="font-size:18px;font-weight:700;line-height:1.4;color:rgb(99,255,33)">Chamar no WhatsApp</span>
+    </a>
+
+    <!-- formulário -->
+    <div style="position:absolute;left:739px;top:206px;width:321px;display:flex;flex-direction:column;gap:0">
+      <label style="margin-bottom:5px;font-size:15px;font-weight:600;line-height:1.4;color:#ffffff">Nome</label>
+      <input type="text" placeholder="Nome" value="{{ vNome }}" onChange="{{ setNome }}" style="width:321px;height:33px;border:2px solid {{ bNome }};border-radius:10px;background:rgb(217,217,217);padding:0 12px;font-size:16px;font-weight:500;color:#1e1e1e;outline:none" style-focus="box-shadow:0 0 0 2px rgb(187,44,255)" />
+      <span style="height:13px;margin-top:1px;font-size:12px;font-weight:600;line-height:13px;color:#ff4d4d;opacity:{{ eNome }}">Campo obrigatório</span>
+      <label style="margin-bottom:5px;font-size:15px;font-weight:600;line-height:1.4;color:#ffffff">Email</label>
+      <input type="email" placeholder="velixtech.ceo@gmail.com" value="{{ vEmail }}" onChange="{{ setEmail }}" style="width:321px;height:33px;border:2px solid {{ bEmail }};border-radius:10px;background:rgb(217,217,217);padding:0 12px;font-size:16px;font-weight:500;color:#1e1e1e;outline:none" style-focus="box-shadow:0 0 0 2px rgb(187,44,255)" />
+      <span style="height:13px;margin-top:1px;font-size:12px;font-weight:600;line-height:13px;color:#ff4d4d;opacity:{{ eEmail }}">Campo obrigatório</span>
+      <label style="margin-bottom:5px;font-size:15px;font-weight:600;line-height:1.4;color:#ffffff">Telefone</label>
+      <input type="tel" placeholder="+55 (61) 98255-4750" value="{{ vTel }}" onChange="{{ setTel }}" style="width:321px;height:33px;border:2px solid {{ bTel }};border-radius:10px;background:rgb(217,217,217);padding:0 12px;font-size:16px;font-weight:500;color:#1e1e1e;outline:none" style-focus="box-shadow:0 0 0 2px rgb(187,44,255)" />
+      <span style="height:13px;margin-top:1px;font-size:12px;font-weight:600;line-height:13px;color:#ff4d4d;opacity:{{ eTel }}">Campo obrigatório</span>
+      <label style="margin-bottom:5px;font-size:15px;font-weight:600;line-height:1.4;color:#ffffff">Mensagem</label>
+      <textarea placeholder="Mensagem..." value="{{ vMsg }}" onChange="{{ setMsg }}" style="width:321px;height:134px;border:2px solid {{ bMsg }};border-radius:10px;background:rgb(217,217,217);padding:10px 12px;font-size:16px;font-weight:500;color:#1e1e1e;outline:none;resize:none" style-focus="box-shadow:0 0 0 2px rgb(187,44,255)"></textarea>
+      <span style="height:13px;margin-top:1px;font-size:12px;font-weight:600;line-height:13px;color:#ff4d4d;opacity:{{ eMsg }}">Campo obrigatório</span>
+      <button onClick="{{ enviar }}" style="margin-top:8px;width:321px;height:47px;border-radius:10px;background:rgb(64,14,88);border:1px solid rgb(187,44,255);font-family:Inter,sans-serif;font-size:18px;font-weight:600;letter-spacing:0.02em;color:#ffffff;cursor:pointer;transition:background 160ms ease" style-hover="background:rgb(90,22,122)">ENVIAR</button>
+    </div>
+  </div>
+
+  <!-- ═══ RODAPÉ ═══ -->
+  <div style="position:absolute;left:0;top:2356px;width:1400px;height:68px;background:#ffffff">
+    <div style="position:absolute;left:646px;top:6px;width:108px;height:36px">
+      <a href="https://www.tiktok.com/@velixtech_" target="_blank" rel="noopener noreferrer" style="position:absolute;left:0;top:0;width:36px;height:36px;background-color:#000;-webkit-mask:url(assets/social-tiktok.png) center / cover no-repeat;mask:url(assets/social-tiktok.png) center / cover no-repeat;transition:background-color 180ms ease" style-hover="background-color:#400E58"></a>
+      <a href="https://www.instagram.com/velix_tech" target="_blank" rel="noopener noreferrer" style="position:absolute;left:42.2px;top:5.54px;width:24.93px;height:24.93px;background-color:#000;-webkit-mask:url(assets/social-instagram.svg) center / contain no-repeat;mask:url(assets/social-instagram.svg) center / contain no-repeat;transition:background-color 180ms ease" style-hover="background-color:#400E58"></a>
+      <a href="https://www.linkedin.com/in/velix-tech-821768428/" target="_blank" rel="noopener noreferrer" style="position:absolute;left:74.8px;top:2.08px;width:32.55px;height:32.55px;background-color:#000;-webkit-mask:url(assets/social-linkedin.png) center / cover no-repeat;mask:url(assets/social-linkedin.png) center / cover no-repeat;transition:background-color 180ms ease" style-hover="background-color:#400E58"></a>
+    </div>
+    <span style="position:absolute;left:616px;top:48px;width:168px;white-space:nowrap;text-align:center;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0.14em;color:#000"><span style="font-weight:700;color:#400E58">ＶＥＬＩＸ</span> © 2026</span>
+  </div>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isPortfolio }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Portfolio" ref="{{ rootRef }}" style="position:relative;width:1400px;height:790px;margin:0 auto;overflow:hidden;background:#ffffff;font-family:Inter,sans-serif">
+  <!-- ═══ NAVBAR FIXA ═══ -->
+  <div style="position:fixed;left:{{ navLeft }}px;top:0;width:1400px;height:76px;z-index:60">
+    <div style="position:absolute;left:1px;top:0;width:903px;height:76px">
+      <div onClick="{{ toTop }}" style="position:absolute;left:0;top:4.3px;width:76px;height:76px;background:url(assets/logo-icon-purple-330.png) center / contain no-repeat;cursor:pointer"></div>
+      <span onClick="{{ toTop }}" style="position:absolute;left:63px;top:24px;font-size:24px;font-weight:800;line-height:29px;letter-spacing:0.17em;color:rgb(64,14,88);cursor:pointer">ＶＥＬＩＸ</span>
+      <div style="position:absolute;left:511px;top:30px;display:flex;gap:50px;align-items:center">
+        <span onClick="{{ toTop }}" style="font-size:14px;font-weight:700;color:rgb(64,14,88);cursor:pointer" style-hover="color:#8b3fbf">HOME</span>
+        <span onClick="{{ toSobre }}" style="font-size:14px;font-weight:700;color:rgb(64,14,88);cursor:pointer" style-hover="color:#8b3fbf">SOBRE</span>
+        <span onClick="{{ toPortfolio }}" style="font-size:14px;font-weight:700;color:rgb(64,14,88);cursor:pointer" style-hover="color:#8b3fbf">PORTFOLIO</span>
+        <span onClick="{{ toContato }}" style="font-size:14px;font-weight:700;color:rgb(64,14,88);cursor:pointer" style-hover="color:#8b3fbf">CONTATO</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:0;top:0;width:1400px;height:790px;overflow:hidden;background:#ffffff"><div style="position:absolute;left:0;top:0;width:792px;height:1400px;opacity:0.3;background:url(assets/portfolio-bg.png) 50% 50% / 100% 118.286% no-repeat;transform:matrix(0,1,-1,0,1400,-15);transform-origin:0 0"></div></div>
+
+
+  <span style="position:absolute;left:490px;top:89px;width:415px;text-align:center;font-size:55px;font-weight:700;line-height:1;color:#000">Nosso Portfólio</span>
+
+  <div style="position:absolute;left:373px;top:197px;display:grid;grid-template-columns:315.992px 315.992px;gap:30px">
+    <div style="position:relative;width:315.992px;height:203.206px;border-radius:10px;background:rgba(90,90,90,0.1);box-shadow:inset 0 0 0 1px rgb(64,14,88)">
+      <div style="position:absolute;left:15px;top:15px;width:286.49px;height:157.44px;border-radius:10px;background:rgba(255,255,255,0.1);box-shadow:inset 0 0 0 1px rgb(64,14,88)"></div>
+      <span style="position:absolute;left:5px;top:72px;width:306px;height:44px;text-align:center;font-size:18px;font-weight:600;line-height:1.2;color:#000">Ainda não temos projetos disponivel no momento.</span>
+    </div>
+    <div style="position:relative;width:315.992px;height:203.206px;border-radius:10px;background:rgba(90,90,90,0.1);box-shadow:inset 0 0 0 1px rgb(64,14,88)">
+      <div style="position:absolute;left:15px;top:15px;width:286.49px;height:157.44px;border-radius:10px;background:rgba(255,255,255,0.1);box-shadow:inset 0 0 0 1px rgb(64,14,88)"></div>
+      <span style="position:absolute;left:5px;top:72px;width:306px;height:44px;text-align:center;font-size:18px;font-weight:600;line-height:1.2;color:#000">Ainda não temos projetos disponivel no momento.</span>
+    </div>
+    <div style="position:relative;width:315.992px;height:203.206px;border-radius:10px;background:rgba(90,90,90,0.1);box-shadow:inset 0 0 0 1px rgb(64,14,88)">
+      <div style="position:absolute;left:15px;top:15px;width:286.49px;height:157.44px;border-radius:10px;background:rgba(255,255,255,0.1);box-shadow:inset 0 0 0 1px rgb(64,14,88)"></div>
+      <span style="position:absolute;left:5px;top:72px;width:306px;height:44px;text-align:center;font-size:18px;font-weight:600;line-height:1.2;color:#000">Ainda não temos projetos disponivel no momento.</span>
+    </div>
+    <div style="position:relative;width:315.992px;height:203.206px;border-radius:10px;background:rgba(90,90,90,0.1);box-shadow:inset 0 0 0 1px rgb(64,14,88)">
+      <div style="position:absolute;left:15px;top:15px;width:286.49px;height:157.44px;border-radius:10px;background:rgba(255,255,255,0.1);box-shadow:inset 0 0 0 1px rgb(64,14,88)"></div>
+      <span style="position:absolute;left:5px;top:72px;width:306px;height:44px;text-align:center;font-size:18px;font-weight:600;line-height:1.2;color:#000">Ainda não temos projetos disponivel no momento.</span>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:0;top:722px;width:1400px;height:68px;background:#000"></div>
+  <div style="position:absolute;left:649px;top:728px;width:102px;height:36px">
+    <a href="https://www.tiktok.com/@velixtech_" target="_blank" rel="noopener noreferrer" style="position:absolute;left:0;top:6px;width:24px;height:24px;background-color:#fff;-webkit-mask:url(assets/social-c-white.png) center / contain no-repeat;mask:url(assets/social-c-white.png) center / contain no-repeat;transition:background-color 180ms ease" style-hover="background-color:#400E58"></a>
+    <a href="https://www.instagram.com/velix_tech" target="_blank" rel="noopener noreferrer" style="position:absolute;left:39px;top:6px;width:24px;height:24px;background-color:#fff;-webkit-mask:url(assets/social-b-white.png) center / contain no-repeat;mask:url(assets/social-b-white.png) center / contain no-repeat;transition:background-color 180ms ease" style-hover="background-color:#400E58"></a>
+    <a href="https://www.linkedin.com/in/velix-tech-821768428/" target="_blank" rel="noopener noreferrer" style="position:absolute;left:78px;top:6px;width:24px;height:24px;background-color:#fff;-webkit-mask:url(assets/social-linkedin-white.png) center / contain no-repeat;mask:url(assets/social-linkedin-white.png) center / contain no-repeat;transition:background-color 180ms ease" style-hover="background-color:#400E58"></a>
+  </div>
+  <span style="position:absolute;left:616px;top:770px;width:168px;white-space:nowrap;text-align:center;font-size:14px;font-weight:400;line-height:14px;letter-spacing:0.14em;color:#fff"><span style="font-weight:700;color:#400E58">ＶＥＬＩＸ</span> © 2026</span>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;expandOnClick&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamento&quot;},&quot;startScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;portfolio&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;\&quot;home\&quot; | \&quot;portfolio\&quot;&quot;,&quot;section&quot;:&quot;Comportamento&quot;}}">
+class Component extends DCLogic {
+  state = { screen: null, open: null, y: 0, navLeft: 0, form: { nome: "", email: "", tel: "", msg: "" }, errors: {} };
+
+  setField(k, val) {
+    this.setState((s) => ({
+      form: Object.assign({}, s.form, { [k]: val }),
+      errors: Object.assign({}, s.errors, { [k]: false }),
+    }));
+  }
+
+  setRoot = (el) => { this.rootEl = el; };
+
+  measure = () => {
+    this.raf = null;
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    const el = this.rootEl;
+    const navLeft = el ? Math.round(el.getBoundingClientRect().left) : 0;
+    if (y === this.state.y && navLeft === this.state.navLeft) return;
+    this.setState({ y, navLeft });
+  };
+
+  schedule = () => {
+    if (this.raf == null) this.raf = requestAnimationFrame(this.measure);
+  };
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.schedule, { passive: true });
+    window.addEventListener("resize", this.schedule);
+    requestAnimationFrame(this.measure);
+    const v = document.querySelector('video[src="assets/hero-bg.mp4"]');
+    if (v) {
+      v.muted = true;
+      v.loop = true;
+      const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+      // rebobina no fim (e se o loop nativo falhar por metadados incompletos)
+      v.addEventListener("ended", () => { v.currentTime = 0; play(); });
+      v.addEventListener("pause", () => { if (!v.seeking && v.currentTime >= v.duration - 0.05) { v.currentTime = 0; play(); } });
+      play();
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.schedule);
+    window.removeEventListener("resize", this.schedule);
+    if (this.raf != null) cancelAnimationFrame(this.raf);
+  }
+
+  // tema da seção que está sob a navbar
+  navTheme() {
+    if (this.screen === "portfolio") return "light";
+    const p = this.state.y + 38;
+    if (p < 789) return "dark";
+    if (p < 1596) return "light";
+    if (p < 2356) return "dark";
+    return "light";
+  }
+
+  get screen() {
+    return this.state.screen ?? (this.props.startScreen === "portfolio" ? "portfolio" : "home");
+  }
+
+  scrollTo(y) {
+    if (this.screen !== "home") { this.setState({ screen: "home" }, () => window.scrollTo({ top: y, behavior: "smooth" })); }
+    else { window.scrollTo({ top: y, behavior: "smooth" }); }
+  }
+
+  renderVals() {
+    const expandable = this.props.expandOnClick ?? true;
+    const open = expandable ? this.state.open : null;
+    const toggle = (i) => () => this.setState((s) => ({ open: s.open === i ? null : i }));
+    const theme = this.navTheme();
+    const scrolled = this.state.y > 8;
+    const p = this.state.y + 38;
+    const inContato = this.screen === "home" && p >= 1596 && p < 2356;
+    const f = this.state.form;
+    const err = this.state.errors;
+    return {
+      rootRef: this.setRoot,
+      navLeft: this.state.navLeft,
+      darkOpacity: theme === "dark" ? 1 : 0,
+      lightOpacity: theme === "dark" ? 0 : 1,
+      darkPE: theme === "dark" ? "auto" : "none",
+      lightPE: theme === "dark" ? "none" : "auto",
+      navBg: !scrolled || inContato ? "transparent" : theme === "dark" ? "rgba(22,10,30,0.92)" : "rgba(255,255,255,0.94)",
+      navShadow: scrolled && !inContato ? "0 1px 24px rgba(0,0,0,0.18)" : "none",
+      isHome: this.screen === "home",
+      isPortfolio: this.screen === "portfolio",
+      expandable,
+      op0: open === 0 ? 1 : 0,
+      op1: open === 1 ? 1 : 0,
+      op2: open === 2 ? 1 : 0,
+      op3: open === 3 ? 1 : 0,
+      toggle0: toggle(0),
+      toggle1: toggle(1),
+      toggle2: toggle(2),
+      toggle3: toggle(3),
+      vNome: f.nome, vEmail: f.email, vTel: f.tel, vMsg: f.msg,
+      setNome: (e) => this.setField("nome", e.target.value),
+      setEmail: (e) => this.setField("email", e.target.value),
+      setTel: (e) => this.setField("tel", e.target.value),
+      setMsg: (e) => this.setField("msg", e.target.value),
+      bNome: err.nome ? "#ff4d4d" : "transparent",
+      bEmail: err.email ? "#ff4d4d" : "transparent",
+      bTel: err.tel ? "#ff4d4d" : "transparent",
+      bMsg: err.msg ? "#ff4d4d" : "transparent",
+      eNome: err.nome ? 1 : 0,
+      eEmail: err.email ? 1 : 0,
+      eTel: err.tel ? 1 : 0,
+      eMsg: err.msg ? 1 : 0,
+      enviar: () => {
+        const v = this.state.form;
+        const miss = {
+          nome: !v.nome.trim(),
+          email: !v.email.trim(),
+          tel: !v.tel.trim(),
+          msg: !v.msg.trim(),
+        };
+        if (miss.nome || miss.email || miss.tel || miss.msg) { this.setState({ errors: miss }); return; }
+        this.setState({ form: { nome: "", email: "", tel: "", msg: "" }, errors: {} });
+      },
+      toTop: () => this.scrollTo(0),
+      toSobre: () => this.scrollTo(789),
+      toContato: () => {
+        const top = this.rootEl ? this.rootEl.getBoundingClientRect().top + (window.scrollY || 0) : 0;
+        const vh = window.innerHeight || 0;
+        const max = Math.max(0, (document.documentElement.scrollHeight || 0) - vh);
+        this.scrollTo(Math.min(max, Math.max(1596, top + 2424 - vh)));
+      },
+      toPortfolio: () => { this.setState({ screen: "portfolio" }); window.scrollTo({ top: 0 }); },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
