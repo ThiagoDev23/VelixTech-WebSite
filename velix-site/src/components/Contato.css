@@ -5,6 +5,14 @@
   background: rgb(20, 4, 28);
   padding: 90px 24px 80px;
   scroll-margin-top: 76px;
+  /* Guarantees Contato alone is at least one viewport tall, so scrolling to
+     reveal the footer fully never has to scroll back up into Sobre's white
+     background on taller viewports. */
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contato__bg {

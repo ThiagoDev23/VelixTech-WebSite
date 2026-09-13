@@ -1,9 +1,6 @@
-import tiktokBlack from "../assets/social-tiktok.png";
-import linkedinBlack from "../assets/social-linkedin.png";
-import tiktokWhite from "../assets/social-c-white.png";
-import instagramWhite from "../assets/social-b-white.png";
-import linkedinWhite from "../assets/social-linkedin-white.png";
-import instagramSvg from "../assets/social-instagram.svg";
+import tiktokIcon from "../assets/social-c-white.png";
+import instagramIcon from "../assets/social-b-white.png";
+import linkedinIcon from "../assets/social-linkedin-white.png";
 import "./Footer.css";
 
 const LINKS = {
@@ -12,13 +9,13 @@ const LINKS = {
   linkedin: "https://www.linkedin.com/in/velix-tech-821768428/",
 };
 
+// Both footers mask the same uniformly-sized icon set (from the portfolio
+// footer's assets) and just recolor via background-color, so the two
+// footers always match in size/spacing regardless of variant.
+const icons = { tiktok: tiktokIcon, instagram: instagramIcon, linkedin: linkedinIcon };
+
 // variant: "light" (white bg / black icons, home) | "dark" (black bg / white icons, portfolio)
 export default function Footer({ variant = "light", forwardedRef }) {
-  const icons =
-    variant === "dark"
-      ? { tiktok: tiktokWhite, instagram: instagramWhite, linkedin: linkedinWhite }
-      : { tiktok: tiktokBlack, instagram: instagramSvg, linkedin: linkedinBlack };
-
   return (
     <footer ref={forwardedRef} className={`footer footer--${variant}`}>
       <div className="footer__social">

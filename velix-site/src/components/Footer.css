@@ -19,14 +19,14 @@
 .footer__social {
   display: flex;
   align-items: center;
-  gap: 18px;
-  height: 36px;
+  gap: 15px;
+  height: 24px;
 }
 
 .footer__icon {
   display: block;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   -webkit-mask-position: center;
   mask-position: center;
   -webkit-mask-size: contain;

@@ -20,8 +20,9 @@ export default function PortfolioPage() {
         <div className="portfolio__grid">
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="portfolio__card">
-              <div className="portfolio__card-inner" />
-              <span className="portfolio__card-text">{PLACEHOLDER_TEXT}</span>
+              <div className="portfolio__card-inner">
+                <span className="portfolio__card-text">{PLACEHOLDER_TEXT}</span>
+              </div>
             </div>
           ))}
         </div>
