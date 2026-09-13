@@ -1,0 +1,58 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 789px;
+  overflow: hidden;
+  background: rgb(30, 30, 30);
+  scroll-margin-top: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  padding: 140px 24px 0;
+  text-align: center;
+}
+
+.hero__title {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: clamp(38px, 6.5vw, 98.23px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.hero__subtitle {
+  margin: 28px auto 0;
+  max-width: 491px;
+  font-size: clamp(14px, 1.6vw, 17.86px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 620px;
+  }
+
+  .hero__content {
+    padding-top: 110px;
+  }
+}
