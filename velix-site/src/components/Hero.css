@@ -38,7 +38,7 @@
 .hero__subtitle {
   position: absolute;
   left: 50%;
-  top: 62.11%;
+  top: 58%;
   transform: translateX(-50%);
   width: min(491px, 90%);
   margin: 0;
@@ -47,4 +47,10 @@
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.75);
   text-align: center;
+}
+
+@media (max-width: 640px) {
+  .hero__subtitle {
+    top: 48%;
+  }
 }
