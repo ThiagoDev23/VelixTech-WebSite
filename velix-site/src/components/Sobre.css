@@ -28,13 +28,13 @@
    just centered as a box) so the X where the two shapes cross - at
    (745, 200) in the 1818x841 source - lands horizontally centered and
    near the top of the section (not vertically centered, which pushed it
-   too far down on tall sections), matching the requested placement. */
+   the section, not the center of the image's own bounding box. */
 .sobre__bg {
   position: absolute;
   width: 100cqw;
   height: 46.2596cqw; /* 100cqw * 841/1818, keeps native aspect ratio */
   left: 9.021cqw; /* (0.5 - 745/1818) * 100cqw */
-  top: calc(30px - 11.001cqw); /* small top gap minus (200/841)*height */
+  top: calc(50cqh - 11.001cqw); /* container center minus (200/841)*height */
   user-select: none;
 }
 
