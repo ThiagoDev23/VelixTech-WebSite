@@ -46,14 +46,16 @@ const Hero = forwardRef(function Hero(_props, ref) {
         playsInline
         className="hero__video"
       />
-      <h1 className="hero__title">
-        Soluções Tecnológicas
-        <br />
-        para empresas.
-      </h1>
-      <p className="hero__subtitle">
-        Faça seu website construindo experiência para o próximo nível e aumente sua produtividade.
-      </p>
+      <div className="hero__content">
+        <h1 className="hero__title">
+          Soluções Tecnológicas
+          <br />
+          para empresas.
+        </h1>
+        <p className="hero__subtitle">
+          Faça seu website construindo experiência para o próximo nível e aumente sua produtividade.
+        </p>
+      </div>
     </section>
   );
 });

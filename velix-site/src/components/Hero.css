@@ -54,3 +54,34 @@
     top: 48%;
   }
 }
+
+/* Below this width the title can wrap to 2 lines tall enough, on short
+   phone screens, to collide with the subtitle's fixed top% - so instead
+   of two independently-pinned positions, pin the wrapper once and let
+   title/subtitle stack in normal flow, which can never overlap. Desktop
+   is untouched: .hero__content has no rules outside this query, so it
+   stays a plain non-positioned div and title/subtitle keep behaving
+   exactly as before (position: absolute against .hero). */
+@media (max-width: 480px) {
+  .hero__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 32.32%;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero__title,
+  .hero__subtitle {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+  }
+}

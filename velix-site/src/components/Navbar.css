@@ -139,6 +139,10 @@
     gap: 8px;
   }
 
+  .navbar__logo {
+    position: static;
+  }
+
   .navbar__logo--dark,
   .navbar__logo--light {
     width: 40px;
@@ -162,7 +166,7 @@
   }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 430px) {
   .navbar__wordmark {
     display: none;
   }
