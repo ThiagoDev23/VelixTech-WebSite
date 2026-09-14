@@ -63,7 +63,9 @@ export default function HomePage() {
     const contatoEl = contatoRef.current;
     const footerEl = footerRef.current;
     if (!contatoEl || !footerEl) return;
-    const contatoTop = contatoEl.getBoundingClientRect().top + window.scrollY;
+    // Rounded up (with a 1px pad) so a fractional layout position never
+    // rounds down past Contato's real top and shows a sliver of Sobre.
+    const contatoTop = Math.ceil(contatoEl.getBoundingClientRect().top + window.scrollY) + 1;
     const footerBottom = footerEl.getBoundingClientRect().bottom + window.scrollY;
     const vh = window.innerHeight;
     const maxScroll = document.documentElement.scrollHeight - vh;

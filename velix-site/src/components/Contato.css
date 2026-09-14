@@ -6,6 +6,11 @@
   background: rgb(20, 4, 28);
   padding: 90px 24px 80px;
   scroll-margin-top: 76px;
+  /* Contato + Footer (70px) must add up to at least one viewport tall.
+     Otherwise "scroll to reveal the footer" has nowhere left to scroll to
+     and the browser clamps short, leaving Sobre's white background exposed
+     above Contato. This adds exactly the needed slack, no more. */
+  min-height: calc(100vh - 70px);
 }
 
 .contato__bg {
