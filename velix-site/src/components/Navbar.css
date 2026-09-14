@@ -15,7 +15,9 @@
   margin: 0 auto;
 }
 
-/* Exact coordinates from the original design canvas (1400px reference width). */
+/* Pinned to a fixed distance from the real left edge of the screen (not
+   the centered 1400px column), so it stays close to the edge on wide
+   screens instead of drifting toward the middle. */
 .navbar__brand {
   position: absolute;
   top: 4.3px;
@@ -30,11 +32,11 @@
 }
 
 .navbar__brand--dark {
-  left: 13px;
+  left: 32px;
 }
 
 .navbar__brand--light {
-  left: 1px;
+  left: 20px;
 }
 
 .navbar__logo {

@@ -33,16 +33,16 @@ export default function Navbar({ theme = "light", background = "transparent", bo
 
   return (
     <div className="navbar" style={{ background, boxShadow }}>
-      <div className="navbar__inner">
-        <div className={`navbar__brand navbar__brand--dark ${dark ? "is-visible" : ""}`}>
-          <div className="navbar__logo navbar__logo--dark" style={{ backgroundImage: `url(${logoWhite})` }} onClick={goHome} />
-          <span className="navbar__wordmark navbar__wordmark--dark" onClick={goHome}>ＶＥＬＩＸ</span>
-        </div>
-        <div className={`navbar__brand navbar__brand--light ${!dark ? "is-visible" : ""}`}>
-          <div className="navbar__logo navbar__logo--light" style={{ backgroundImage: `url(${logoPurple})` }} onClick={goHome} />
-          <span className="navbar__wordmark navbar__wordmark--light" onClick={goHome}>ＶＥＬＩＸ</span>
-        </div>
+      <div className={`navbar__brand navbar__brand--dark ${dark ? "is-visible" : ""}`}>
+        <div className="navbar__logo navbar__logo--dark" style={{ backgroundImage: `url(${logoWhite})` }} onClick={goHome} />
+        <span className="navbar__wordmark navbar__wordmark--dark" onClick={goHome}>ＶＥＬＩＸ</span>
+      </div>
+      <div className={`navbar__brand navbar__brand--light ${!dark ? "is-visible" : ""}`}>
+        <div className="navbar__logo navbar__logo--light" style={{ backgroundImage: `url(${logoPurple})` }} onClick={goHome} />
+        <span className="navbar__wordmark navbar__wordmark--light" onClick={goHome}>ＶＥＬＩＸ</span>
+      </div>
 
+      <div className="navbar__inner">
         <nav className={`navbar__links ${dark ? "navbar__links--dark" : "navbar__links--light"}`}>
           <span onClick={goHome}>HOME</span>
           <span onClick={goSobre}>SOBRE</span>
