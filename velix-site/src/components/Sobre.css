@@ -17,19 +17,23 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* Lets .sobre__bg size itself in units of *this* box below, so the math
+     that centers the X on the crossing point stays correct at any size. */
+  container-type: size;
 }
 
 /* Scale-to-fit (never crop) so the whole line pattern - both full hexagon
-   shapes - always stays intact and centered, just like the source art,
-   instead of cropping down to whatever 1818px-wide slice fits the
-   viewport. max-width caps it at native resolution to avoid upscaling. */
+   shapes - always stays intact, like the source art, instead of cropping
+   down to whatever 1818px-wide slice fits the viewport. Positioned (not
+   just centered as a box) so the X where the two shapes cross - at
+   (745, 200) in the 1818x841 source - lands on the exact center of the
+   section, not the center of the image's own bounding box. */
 .sobre__bg {
-  width: 100%;
-  height: auto;
-  max-width: 1818px;
+  position: absolute;
+  width: 100cqw;
+  height: 46.2596cqw; /* 100cqw * 841/1818, keeps native aspect ratio */
+  left: 9.021cqw; /* (0.5 - 745/1818) * 100cqw */
+  top: calc(50cqh - 11.001cqw); /* container center minus (200/841)*height */
   user-select: none;
 }
 
