@@ -18,32 +18,29 @@
 
 .portfolio__bgwrap {
   position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 1400px;
-  height: 790px;
+  inset: 0;
   overflow: hidden;
   background: #ffffff;
   pointer-events: none;
+  /* Container query units let the rotated image below size itself off this
+     box's own width/height instead of the viewport, so it always fully
+     covers Portfolio's actual area (which varies with content) with no
+     gaps on the sides or at the bottom. */
+  container-type: size;
 }
 
-/* Exact original layer: a 792x1400 portrait box rotated 90deg into the
-   1400x790 landscape canvas, via the design's own transform matrix. */
 .portfolio__bg {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 792px;
-  height: 1400px;
-  max-width: none;
+  top: 50%;
+  left: 50%;
+  /* Swapped on purpose: this box is sized as if un-rotated (cqh becomes the
+     rendered width, cqw the rendered height), so rotating it 90deg below
+     lands it back at exactly 100cqw x 100cqh - the wrapper's full size. */
+  width: 100cqh;
+  height: 100cqw;
+  object-fit: cover;
   opacity: 0.3;
-  background-position: 50% 50%;
-  background-size: 100% 118.286%;
-  background-repeat: no-repeat;
-  transform: matrix(0, 1, -1, 0, 1400, -15);
-  transform-origin: 0 0;
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .portfolio__title {

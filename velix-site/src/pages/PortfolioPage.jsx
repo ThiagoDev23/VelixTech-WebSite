@@ -12,7 +12,7 @@ export default function PortfolioPage() {
 
       <section className="portfolio">
         <div className="portfolio__bgwrap">
-          <div className="portfolio__bg" style={{ backgroundImage: `url(${portfolioBg})` }} />
+          <img src={portfolioBg} alt="" className="portfolio__bg" />
         </div>
 
         <h1 className="portfolio__title">Nosso Portfólio</h1>
