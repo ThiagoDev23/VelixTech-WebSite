@@ -17,16 +17,19 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Scale-to-fit (never crop) so the whole line pattern - both full hexagon
+   shapes - always stays intact and centered, just like the source art,
+   instead of cropping down to whatever 1818px-wide slice fits the
+   viewport. max-width caps it at native resolution to avoid upscaling. */
 .sobre__bg {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 1818px;
-  height: 841px;
-  max-width: none;
+  width: 100%;
+  height: auto;
+  max-width: 1818px;
   user-select: none;
 }
 
