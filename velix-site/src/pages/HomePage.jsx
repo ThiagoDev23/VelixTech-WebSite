@@ -56,15 +56,28 @@ export default function HomePage() {
     };
   }, [measure]);
 
+  // Scrolls so the footer's bottom lines up with the viewport bottom (fully
+  // revealing it), but never scrolls above Contato's own top - otherwise on
+  // a tall viewport that alignment would have to dip back up into Sobre.
+  const scrollToContato = useCallback(() => {
+    const contatoEl = contatoRef.current;
+    const footerEl = footerRef.current;
+    if (!contatoEl || !footerEl) return;
+    const contatoTop = contatoEl.getBoundingClientRect().top + window.scrollY;
+    const footerBottom = footerEl.getBoundingClientRect().bottom + window.scrollY;
+    const vh = window.innerHeight;
+    const maxScroll = document.documentElement.scrollHeight - vh;
+    const target = Math.min(maxScroll, Math.max(contatoTop, footerBottom - vh));
+    window.scrollTo({ top: target, behavior: "smooth" });
+  }, []);
+
   useEffect(() => {
     const target = location.state?.scrollTo;
     if (!target) return;
-    const ref = target === "sobre" ? sobreRef : target === "contato" ? footerRef : null;
-    if (ref?.current) {
-      requestAnimationFrame(() => {
-        ref.current.scrollIntoView({ behavior: "smooth", block: target === "contato" ? "end" : "start" });
-      });
-    }
+    requestAnimationFrame(() => {
+      if (target === "contato") scrollToContato();
+      else if (target === "sobre") sobreRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
     navigate(".", { replace: true, state: {} });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state]);
@@ -80,7 +93,7 @@ export default function HomePage() {
         boxShadow={navShadow}
         onHome={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         onSobre={() => sobreRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-        onContato={() => footerRef.current?.scrollIntoView({ behavior: "smooth", block: "end" })}
+        onContato={scrollToContato}
       />
       <Hero ref={heroRef} />
       <Sobre ref={sobreRef} />
