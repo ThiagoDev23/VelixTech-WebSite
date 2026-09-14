@@ -14,12 +14,7 @@
 
 .sobre__bgwrap {
   position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 1400px;
-  height: 100%;
+  inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
