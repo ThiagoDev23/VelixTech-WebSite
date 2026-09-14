@@ -21,8 +21,9 @@
 
 .sobre__bg {
   position: absolute;
-  left: -83px;
-  top: -70px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 1818px;
   height: 841px;
   max-width: none;
