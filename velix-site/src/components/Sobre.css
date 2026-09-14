@@ -34,7 +34,7 @@
   width: 100cqw;
   height: 46.2596cqw; /* 100cqw * 841/1818, keeps native aspect ratio */
   left: 9.021cqw; /* (0.5 - 745/1818) * 100cqw */
-  top: calc(14cqh - 11.001cqw); /* raised further above vertical center */
+  top: calc(20cqh - 11.001cqw); /* nudged back down slightly */
   user-select: none;
 }
 
