@@ -160,7 +160,7 @@
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 370px) {
   .navbar__wordmark {
     display: none;
   }
