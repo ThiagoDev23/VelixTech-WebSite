@@ -148,14 +148,6 @@
   padding: 20px 36px;
 }
 
-/* Centering alone doesn't help once the text needs more vertical room
-   than the fixed 145px card has - it would just get clipped top and
-   bottom instead of only at the top. Grow the card itself (only while
-   this overlay is open) so the full paragraph always fits. */
-.card:has(.card__overlay--bottom.is-open) {
-  min-height: 165px;
-}
-
 .card__long {
   font-size: 15px;
   font-weight: 600;
