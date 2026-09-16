@@ -8,11 +8,23 @@
   transition: background 320ms ease, box-shadow 320ms ease;
 }
 
+/* Below 1400px viewport width this box is exactly as wide as .navbar
+   itself (max-width only caps growth, it doesn't force-shrink below the
+   available space), so it fully overlaps the logo/wordmark. Being later
+   in the DOM, it would otherwise paint on top of them and swallow
+   clicks meant for the logo even though it has no visible content
+   there - only the links do. pointer-events:none/auto below opts it out
+   of hit-testing except where the links actually are, at every width. */
 .navbar__inner {
   position: relative;
   max-width: 1400px;
   height: 100%;
   margin: 0 auto;
+  pointer-events: none;
+}
+
+.navbar__links {
+  pointer-events: auto;
 }
 
 /* Pinned to a fixed distance from the real left edge of the screen (not
@@ -127,15 +139,6 @@
     padding: 0 16px;
     display: flex;
     align-items: center;
-    /* This box spans the full navbar width even though only the links on
-       its right side have content - without this it sits on top of the
-       logo/wordmark (earlier in the DOM, so painted underneath) and
-       swallows clicks meant for them. */
-    pointer-events: none;
-  }
-
-  .navbar__links {
-    pointer-events: auto;
   }
 
   .navbar__brand {
