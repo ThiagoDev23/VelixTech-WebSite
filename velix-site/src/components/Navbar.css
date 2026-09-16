@@ -127,6 +127,15 @@
     padding: 0 16px;
     display: flex;
     align-items: center;
+    /* This box spans the full navbar width even though only the links on
+       its right side have content - without this it sits on top of the
+       logo/wordmark (earlier in the DOM, so painted underneath) and
+       swallows clicks meant for them. */
+    pointer-events: none;
+  }
+
+  .navbar__links {
+    pointer-events: auto;
   }
 
   .navbar__brand {
