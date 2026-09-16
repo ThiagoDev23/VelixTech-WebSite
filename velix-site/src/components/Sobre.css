@@ -161,6 +161,61 @@
   line-height: 1.42;
 }
 
+/* The 4 fixed-height cards + gaps + section padding were sized to fit
+   comfortably in a full-height desktop viewport. On a short-but-wide
+   window (a non-maximized browser, limited vertical resolution) that
+   same fixed total simply doesn't fit and the bottom card(s) get cut
+   off - so scale the same sizes down whenever the viewport is short,
+   independent of width. A comfortably tall viewport never matches
+   this, so it's untouched. */
+@media (max-height: 820px) {
+  .sobre {
+    padding: 40px 0;
+  }
+
+  .sobre__cards {
+    gap: 12px;
+  }
+
+  .card {
+    height: 108px;
+    padding: 14px 20px 10px;
+    gap: 6px;
+  }
+
+  .card__title {
+    font-size: 16px;
+  }
+
+  .card__short {
+    font-size: clamp(13px, 2vw, 19px);
+  }
+}
+
+@media (max-height: 620px) {
+  .sobre {
+    padding: 24px 0;
+  }
+
+  .sobre__cards {
+    gap: 8px;
+  }
+
+  .card {
+    height: 82px;
+    padding: 10px 16px 8px;
+    gap: 4px;
+  }
+
+  .card__title {
+    font-size: 14px;
+  }
+
+  .card__short {
+    font-size: clamp(11px, 1.8vw, 15px);
+  }
+}
+
 @media (max-width: 900px) {
   .sobre__inner {
     flex-direction: column;
