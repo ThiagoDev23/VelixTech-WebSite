@@ -222,15 +222,36 @@ textarea.field__input {
   color: #ff4d4d;
 }
 
-/* Once the two columns stack, every fixed desktop size (headings,
-   labels, buttons, field heights, all the margins between them) adds
-   up down the page instead of sitting side by side - so the section
-   ends up much taller than one viewport instead of keeping the
-   desktop's roughly one-screenful composition. Scaling these down
-   keeps the same layout/content, just proportioned for a stacked
-   column instead of a wide desktop row. Desktop (>900px) never
-   matches this query, so it's untouched. */
+/* Stacking to a single column is purely a width call - a short-but-wide
+   window should keep the desktop's side-by-side layout, just at a more
+   compact size (below). */
 @media (max-width: 900px) {
+  .contato__body {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .contato__info {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Every fixed desktop size here (headings, labels, buttons, field
+   heights, all the margins between them) was tuned to fit comfortably
+   in one full-height desktop viewport. Below 900px wide the columns
+   stack, so those same sizes pile up vertically instead of sitting
+   side by side; independently, on a short-but-wide window (a
+   non-maximized browser, a laptop with limited vertical resolution)
+   the two-column layout survives but the content is simply taller
+   than the available height, in either case pushing the footer (and
+   often "Fale Conosco!" itself) out of view instead of keeping the
+   desktop's roughly one-screenful composition. Scaling these down
+   whenever EITHER the width or the height is constrained keeps the
+   same layout/content, just proportioned to fit. A comfortably wide
+   AND tall viewport never matches either condition, so it's
+   untouched. */
+@media (max-width: 900px), (max-height: 820px) {
   .contato {
     padding: 60px 24px 60px;
   }
@@ -240,15 +261,7 @@ textarea.field__input {
   }
 
   .contato__body {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
     margin-top: 36px;
-  }
-
-  .contato__info {
-    align-items: center;
-    text-align: center;
   }
 
   .contato__info-title {
@@ -303,18 +316,26 @@ textarea.field__input {
   }
 }
 
-/* Phones need a bit more of the same proportional tightening on top of
-   the 900px tier above - narrower still, so labels/fields wrap less
-   and the stacked column adds up to noticeably more height per
-   pixel of width than at tablet sizes. */
+/* The stacked column's own gap only makes sense once actually
+   stacked - kept width-only for the same reason as the 900px tier
+   above. */
 @media (max-width: 480px) {
+  .contato__body {
+    gap: 24px;
+  }
+}
+
+/* Phones (or equally short windows) need a bit more of the same
+   proportional tightening on top of the 900px/820px tier above -
+   smaller still, so labels/fields wrap less and the content adds up
+   to noticeably more height per pixel of available space. */
+@media (max-width: 480px), (max-height: 650px) {
   .contato {
     padding: 40px 24px 40px;
   }
 
   .contato__body {
     margin-top: 24px;
-    gap: 24px;
   }
 
   .contato__info-title {
