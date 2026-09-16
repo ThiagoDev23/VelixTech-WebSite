@@ -28,11 +28,7 @@
   padding: 0 24px;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  /* min(vw, vh) so the title also shrinks on a short-but-wide window
-     (a non-maximized browser, limited vertical resolution) - vw alone
-     kept it at full size there, tall enough at two lines to run into
-     the subtitle below. */
-  font-size: clamp(32px, min(6.5vw, 9.3vh), 98.23px);
+  font-size: clamp(32px, 6.5vw, 98.23px);
   line-height: 1.02;
   letter-spacing: -0.04em;
   color: #ffffff;
@@ -46,7 +42,7 @@
   transform: translateX(-50%);
   width: min(491px, 90%);
   margin: 0;
-  font-size: clamp(13px, min(1.6vw, 2.3vh), 17.86px);
+  font-size: clamp(13px, 1.6vw, 17.86px);
   font-weight: 500;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.75);
@@ -66,7 +62,7 @@
    is untouched: .hero__content has no rules outside this query, so it
    stays a plain non-positioned div and title/subtitle keep behaving
    exactly as before (position: absolute against .hero). */
-@media (max-width: 480px), (max-height: 620px) {
+@media (max-width: 480px) {
   .hero__content {
     position: absolute;
     left: 0;
