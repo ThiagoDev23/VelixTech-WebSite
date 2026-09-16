@@ -56,21 +56,17 @@ export default function HomePage() {
     };
   }, [measure]);
 
-  // Scrolls so the footer's bottom lines up with the viewport bottom (fully
-  // revealing it), but never scrolls above Contato's own top - otherwise on
-  // a tall viewport that alignment would have to dip back up into Sobre.
+  // Scrolls so the footer's bottom lines up with the viewport bottom
+  // (fully revealing it). Native scrollIntoView instead of computing a
+  // pixel target from a single window.innerHeight snapshot - mobile
+  // browsers resize the viewport mid-scroll as their address bar
+  // collapses, which made a precomputed target land short of the
+  // footer on phones even though the same math checked out on desktop
+  // and in a fixed-viewport test. .contato's min-height guarantees
+  // Contato + Footer together are always at least one viewport tall,
+  // so this never needs to scroll back up into Sobre.
   const scrollToContato = useCallback(() => {
-    const contatoEl = contatoRef.current;
-    const footerEl = footerRef.current;
-    if (!contatoEl || !footerEl) return;
-    // Rounded up (with a 1px pad) so a fractional layout position never
-    // rounds down past Contato's real top and shows a sliver of Sobre.
-    const contatoTop = Math.ceil(contatoEl.getBoundingClientRect().top + window.scrollY) + 1;
-    const footerBottom = footerEl.getBoundingClientRect().bottom + window.scrollY;
-    const vh = window.innerHeight;
-    const maxScroll = document.documentElement.scrollHeight - vh;
-    const target = Math.min(maxScroll, Math.max(contatoTop, footerBottom - vh));
-    window.scrollTo({ top: target, behavior: "smooth" });
+    footerRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, []);
 
   useEffect(() => {
