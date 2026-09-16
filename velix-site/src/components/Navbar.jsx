@@ -10,8 +10,15 @@ export default function Navbar({ theme = "light", background = "transparent", bo
 
   const goHome = () => {
     if (onHome) return onHome();
-    if (location.pathname !== "/") navigate("/");
-    else window.scrollTo({ top: 0, behavior: "smooth" });
+    if (location.pathname !== "/") {
+      // A route change doesn't reset the browser's own scroll position, so
+      // without this, arriving from a scrolled-down Portfolio page lands
+      // partway down Home instead of at the top.
+      window.scrollTo(0, 0);
+      navigate("/");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const goSobre = () => {
