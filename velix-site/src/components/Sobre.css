@@ -143,6 +143,29 @@
   padding: 56px 36px 10px;
 }
 
+/* Below this width the "Quem somos?" card (the only one using this
+   --bottom variant) starts narrowing from its natural 605px, so the
+   long text needs more lines than the fixed 56px top padding leaves
+   room for and crowds up against the dots decoration - worse the
+   narrower it gets. Centering keeps it looking balanced regardless of
+   how many lines it wraps to. 1060px sits just above the width where
+   the card first starts shrinking, so nothing here ever applies at
+   the card's full 605px size - the case above is untouched. */
+@media (max-width: 1060px) {
+  .card__overlay--bottom {
+    align-items: center;
+    padding: 20px 36px;
+  }
+
+  /* Centering alone doesn't help once the text needs more vertical room
+     than the fixed 145px card has - it would just get clipped top and
+     bottom instead of only at the top. Grow the card itself (only while
+     this overlay is open) so the full paragraph always fits. */
+  .card:has(.card__overlay--bottom.is-open) {
+    min-height: 165px;
+  }
+}
+
 .card__long {
   font-size: 15px;
   font-weight: 600;
@@ -180,5 +203,11 @@
 
   .card__short {
     font-size: 16px;
+  }
+
+  /* Down to phone widths the "Quem somos?" paragraph needs considerably
+     more room than 165px - up to ~270px of text alone at 320px wide. */
+  .card:has(.card__overlay--bottom.is-open) {
+    min-height: 320px;
   }
 }
