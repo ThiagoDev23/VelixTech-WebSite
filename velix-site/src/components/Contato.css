@@ -222,15 +222,132 @@ textarea.field__input {
   color: #ff4d4d;
 }
 
+/* Once the two columns stack, every fixed desktop size (headings,
+   labels, buttons, field heights, all the margins between them) adds
+   up down the page instead of sitting side by side - so the section
+   ends up much taller than one viewport instead of keeping the
+   desktop's roughly one-screenful composition. Scaling these down
+   keeps the same layout/content, just proportioned for a stacked
+   column instead of a wide desktop row. Desktop (>900px) never
+   matches this query, so it's untouched. */
 @media (max-width: 900px) {
+  .contato {
+    padding: 60px 24px 60px;
+  }
+
+  .contato__heading {
+    gap: 6px;
+  }
+
   .contato__body {
     flex-direction: column;
     align-items: center;
-    gap: 48px;
+    gap: 32px;
+    margin-top: 36px;
   }
 
   .contato__info {
     align-items: center;
     text-align: center;
+  }
+
+  .contato__info-title {
+    font-size: 24px;
+  }
+
+  .contato__label {
+    margin-top: 14px;
+    font-size: 16px;
+  }
+
+  .contato__label--center {
+    margin-top: 16px;
+  }
+
+  .contato__value {
+    margin-top: 8px;
+  }
+
+  .contato__whatsapp {
+    margin-top: 18px;
+    width: min(260px, 100%);
+    height: 42px;
+  }
+
+  .contato__form label {
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+
+  .field__input {
+    height: 30px;
+  }
+
+  textarea.field__input {
+    height: 96px;
+  }
+
+  .field__error {
+    height: 11px;
+    margin-bottom: 3px;
+  }
+
+  .contato__form button {
+    margin-top: 4px;
+    height: 40px;
+  }
+
+  .contato__status {
+    min-height: 14px;
+    margin-top: 6px;
+  }
+}
+
+/* Phones need a bit more of the same proportional tightening on top of
+   the 900px tier above - narrower still, so labels/fields wrap less
+   and the stacked column adds up to noticeably more height per
+   pixel of width than at tablet sizes. */
+@media (max-width: 480px) {
+  .contato {
+    padding: 40px 24px 40px;
+  }
+
+  .contato__body {
+    margin-top: 24px;
+    gap: 24px;
+  }
+
+  .contato__info-title {
+    font-size: 22px;
+  }
+
+  .contato__label {
+    margin-top: 10px;
+  }
+
+  .contato__label--center {
+    margin-top: 12px;
+  }
+
+  .contato__value {
+    margin-top: 6px;
+  }
+
+  .contato__whatsapp {
+    margin-top: 14px;
+    height: 40px;
+  }
+
+  .field__input {
+    height: 28px;
+  }
+
+  textarea.field__input {
+    height: 80px;
+  }
+
+  .contato__form button {
+    margin-top: 3px;
+    height: 38px;
   }
 }
