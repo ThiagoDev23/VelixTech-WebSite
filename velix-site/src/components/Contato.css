@@ -251,9 +251,9 @@ textarea.field__input {
    same layout/content, just proportioned to fit. A comfortably wide
    AND tall viewport never matches either condition, so it's
    untouched. */
-@media (max-width: 900px), (max-height: 820px) {
+@media (max-width: 900px), (max-height: 960px) {
   .contato {
-    padding: 60px 24px 60px;
+    padding: 84px 24px 24px;
   }
 
   .contato__heading {
@@ -261,7 +261,7 @@ textarea.field__input {
   }
 
   .contato__body {
-    margin-top: 36px;
+    margin-top: 24px;
   }
 
   .contato__info-title {
@@ -321,7 +321,7 @@ textarea.field__input {
    above. */
 @media (max-width: 480px) {
   .contato__body {
-    gap: 24px;
+    gap: 20px;
   }
 }
 
@@ -329,46 +329,74 @@ textarea.field__input {
    proportional tightening on top of the 900px/820px tier above -
    smaller still, so labels/fields wrap less and the content adds up
    to noticeably more height per pixel of available space. */
-@media (max-width: 480px), (max-height: 650px) {
+@media (max-width: 480px), (max-height: 700px) {
   .contato {
-    padding: 40px 24px 40px;
+    padding: 84px 24px 16px;
+  }
+
+  .contato__heading {
+    gap: 4px;
+  }
+
+  .contato__heading h2 {
+    font-size: 26px;
+  }
+
+  .contato__heading p {
+    font-size: 13px;
   }
 
   .contato__body {
-    margin-top: 24px;
-  }
-
-  .contato__info-title {
-    font-size: 22px;
-  }
-
-  .contato__label {
-    margin-top: 10px;
-  }
-
-  .contato__label--center {
     margin-top: 12px;
   }
 
+  .contato__info-title {
+    font-size: 20px;
+  }
+
+  .contato__label {
+    margin-top: 8px;
+    font-size: 15px;
+  }
+
+  .contato__label--center {
+    margin-top: 10px;
+  }
+
   .contato__value {
-    margin-top: 6px;
+    margin-top: 5px;
   }
 
   .contato__whatsapp {
-    margin-top: 14px;
-    height: 40px;
+    margin-top: 10px;
+    height: 36px;
+  }
+
+  .contato__form label {
+    margin-bottom: 2px;
+    font-size: 13px;
   }
 
   .field__input {
-    height: 28px;
+    height: 26px;
   }
 
   textarea.field__input {
-    height: 80px;
+    height: 46px;
+  }
+
+  .field__error {
+    height: 9px;
+    margin-bottom: 2px;
   }
 
   .contato__form button {
-    margin-top: 3px;
-    height: 38px;
+    margin-top: 1px;
+    height: 30px;
+  }
+
+  .contato__status {
+    min-height: 10px;
+    margin-top: 2px;
   }
 }
