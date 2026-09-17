@@ -34,7 +34,17 @@
   width: 100cqw;
   height: 46.2596cqw; /* 100cqw * 841/1818, keeps native aspect ratio */
   left: 9.021cqw; /* (0.5 - 745/1818) * 100cqw */
-  top: calc(20cqh - 11.001cqw); /* nudged back down slightly */
+  /* Was `calc(20cqh - 11.001cqw)`: mixing a height-based term with a
+     width-based one meant the vertical position swung wildly across
+     widths that share a similar viewport height (which is most
+     desktop displays) - width varies far more than height does, so
+     the cqw term dominated and the pattern ended up sitting much
+     lower, relatively, on narrower windows than on wide ones. Pinned
+     entirely to cqw (matching the same unit already used for size/left
+     above) reproduces the exact 1920px-wide position but now scales
+     proportionally with width alone, keeping the same composition at
+     any width. */
+  top: 0.248cqw;
   user-select: none;
 }
 
