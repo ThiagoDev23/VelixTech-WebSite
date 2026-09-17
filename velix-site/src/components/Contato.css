@@ -97,6 +97,13 @@
 
 .contato__whatsapp {
   margin-top: 26px;
+  /* Centers itself on the cross axis regardless of the parent's own
+     align-items (which varies by breakpoint) and regardless of this
+     button's own width shrinking at narrower tiers - keeping it
+     centered under "Se preferir..." (which is centered via its own
+     text-align, independent of this) without needing to touch that
+     text's positioning at all. */
+  align-self: center;
   width: 291px;
   max-width: 100%;
   height: 49px;
