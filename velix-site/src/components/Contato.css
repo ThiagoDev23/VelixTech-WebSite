@@ -401,12 +401,12 @@ textarea.field__input {
   }
 }
 
-/* "Se preferir, chame direto no WhatsApp." - bigger and bolder than
-   the other labels, and deliberately NOT reduced by the tighter-tier
-   rules above (this selector has the same specificity as
+/* "Se preferir, chame direto no WhatsApp." - kept at the original
+   20px/500 desktop size and deliberately NOT reduced by the
+   tighter-tier rules above (this selector has the same specificity as
    .contato__label but comes later, so it wins at every screen size) -
    only the button below keeps its normal responsive sizing. */
 .contato__label--center {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 500;
 }
