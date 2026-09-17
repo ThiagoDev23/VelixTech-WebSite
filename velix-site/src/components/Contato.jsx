@@ -74,11 +74,15 @@ const Contato = forwardRef(function Contato(_props, ref) {
         <div className="contato__info">
           <span className="contato__info-title">Contato</span>
 
-          <span className="contato__label">Email:</span>
-          <span className="contato__value">velixtech.ceo@gmail.com</span>
+          <div className="contato__row">
+            <span className="contato__label">Email:</span>
+            <span className="contato__value">velixtech.ceo@gmail.com</span>
+          </div>
 
-          <span className="contato__label">Telefone:</span>
-          <span className="contato__value">+55 (61) 98255-4750</span>
+          <div className="contato__row">
+            <span className="contato__label">Telefone:</span>
+            <span className="contato__value">+55 (61) 98255-4750</span>
+          </div>
 
           <span className="contato__label contato__label--center">Se preferir, chame direto no WhatsApp.</span>
 

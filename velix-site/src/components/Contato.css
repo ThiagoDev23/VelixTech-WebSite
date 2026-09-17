@@ -76,8 +76,20 @@
   line-height: 1.4;
 }
 
-.contato__label {
+/* Email/Telefone used to be label then value stacked on their own
+   lines (a 20px gap above the label, 12px between label and value).
+   Now they sit side by side in one row, so that 20px "gap above"
+   moves to the row itself and the 12px "between them" becomes a
+   horizontal gap instead. */
+.contato__row {
   margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.contato__label {
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
@@ -89,7 +101,6 @@
 }
 
 .contato__value {
-  margin-top: 12px;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
@@ -275,17 +286,16 @@ textarea.field__input {
     font-size: 24px;
   }
 
-  .contato__label {
+  .contato__row {
     margin-top: 14px;
+  }
+
+  .contato__label {
     font-size: 16px;
   }
 
   .contato__label--center {
     margin-top: 16px;
-  }
-
-  .contato__value {
-    margin-top: 8px;
   }
 
   .contato__whatsapp {
@@ -361,17 +371,16 @@ textarea.field__input {
     font-size: 20px;
   }
 
-  .contato__label {
+  .contato__row {
     margin-top: 8px;
+  }
+
+  .contato__label {
     font-size: 15px;
   }
 
   .contato__label--center {
     margin-top: 10px;
-  }
-
-  .contato__value {
-    margin-top: 5px;
   }
 
   .contato__whatsapp {
