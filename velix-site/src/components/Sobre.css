@@ -145,7 +145,10 @@
    regardless of how many lines it wraps to. */
 .card__overlay--bottom {
   align-items: center;
-  padding: 20px 36px;
+  /* More top than bottom so centered text always clears the dots
+     decoration (which sits within the first ~28px of the card),
+     instead of the two nearly touching at desktop width. */
+  padding: 30px 36px 12px;
 }
 
 .card__long {
@@ -157,8 +160,8 @@
 }
 
 .card__overlay--bottom .card__long {
-  font-size: 13.5px;
-  line-height: 1.42;
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 @media (max-width: 900px) {
