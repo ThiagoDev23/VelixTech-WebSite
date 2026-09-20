@@ -13,7 +13,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 24px 90px;
+  /* Top padding is a floor above the 76px fixed navbar, not just cosmetic
+     spacing - kept as a permanent minimum (rather than only inside the
+     short-viewport tiers below) because the bigger grid introduced here
+     needs enough vertical room that flex centering alone stops reliably
+     providing 76px+ of clearance well before a screen is short enough to
+     match those tiers (e.g. a plain 1920x900 window). Tall viewports are
+     unaffected since centering already clears 84px there on its own. */
+  padding: 84px 24px 90px;
 }
 
 .portfolio__bgwrap {
@@ -57,7 +64,12 @@
 .portfolio__grid {
   position: relative;
   width: 100%;
-  max-width: 662px;
+  /* Scales with viewport width (instead of a flat 662px that took up a
+     shrinking share of the page the wider the screen got) so the grid
+     keeps the same visual proportion at any width - clamped so it
+     never gets cramped just above the single-column breakpoint or
+     absurdly large on an ultra-wide monitor. */
+  max-width: clamp(480px, 50vw, 1400px);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -92,34 +104,27 @@
   color: #000;
 }
 
-@media (max-width: 640px) {
-  .portfolio {
-    padding-top: 110px;
-  }
-
-  .portfolio__grid {
-    grid-template-columns: 1fr;
-    max-width: 320px;
-  }
-
-  .portfolio__card-text {
-    font-size: 15px;
-  }
-}
-
 /* The grid's cards keep their aspect-ratio, so shrinking the grid's own
    max-width also shrinks their height - on a short-but-wide window (a
    non-maximized browser, limited vertical resolution) the full-size
    grid doesn't fit and the bottom row gets cut off, so scale it down
-   whenever the viewport is short, independent of width. A comfortably
-   tall viewport never matches this, so it's untouched. */
+   whenever the viewport is short, independent of width. Each tier below
+   uses min(50vw, Nvh) instead of a flat px value so the grid still
+   scales with width first and only gets pulled smaller by height once
+   height is the tighter constraint - matching the un-tiered rule's own
+   width-driven scaling instead of snapping to one fixed size for every
+   width once a screen is merely "short". A comfortably tall viewport
+   never matches any of these, so it's untouched. Placed before the
+   width-based rules below so a narrow screen's own max-width always
+   wins regardless of height (source order, equal specificity). */
+@media (max-height: 1040px) {
+  .portfolio__grid {
+    max-width: clamp(480px, min(50vw, 76vh), 1400px);
+  }
+}
+
 @media (max-height: 820px) {
   .portfolio {
-    /* Top padding is a floor above the 76px fixed navbar, not just
-       cosmetic spacing - going below it lets the title render behind
-       the navbar once content is short enough that flex centering
-       stops providing its own clearance (the same bug already hit
-       and fixed in Contato). */
     padding: 84px 24px 24px;
   }
 
@@ -128,7 +133,7 @@
   }
 
   .portfolio__grid {
-    max-width: 460px;
+    max-width: clamp(380px, min(50vw, 58vh), 1400px);
     gap: 16px;
   }
 
@@ -147,12 +152,27 @@
   }
 
   .portfolio__grid {
-    max-width: 320px;
+    max-width: clamp(280px, min(50vw, 48vh), 1400px);
     gap: 10px;
   }
 
   .portfolio__card-text {
     font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio {
+    padding-top: 110px;
+  }
+
+  .portfolio__grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  .portfolio__card-text {
+    font-size: 15px;
   }
 }
 
@@ -163,14 +183,14 @@
    combination so it still fits a short viewport. */
 @media (max-width: 640px) and (max-height: 820px) {
   .portfolio__grid {
-    max-width: 220px;
+    max-width: clamp(180px, min(80vw, 30vh), 1400px);
     gap: 10px;
   }
 }
 
 @media (max-width: 640px) and (max-height: 560px) {
   .portfolio__grid {
-    max-width: 160px;
+    max-width: clamp(140px, min(80vw, 22vh), 1400px);
     gap: 6px;
   }
 }
