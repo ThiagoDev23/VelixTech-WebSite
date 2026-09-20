@@ -116,12 +116,17 @@
        cosmetic spacing - going below it lets the title render behind
        the navbar once content is short enough that flex centering
        stops providing its own clearance (the same bug already hit
-       and fixed in Contato). */
+       and fixed in Contato). Switching off centering entirely (rather
+       than just adding padding) matches the reference layout for this
+       viewport range: content anchors right below the navbar with the
+       leftover room showing as background beneath the grid, instead of
+       being split above and below it. */
+    justify-content: flex-start;
     padding: 84px 24px 24px;
   }
 
   .portfolio__title {
-    margin-bottom: 20px;
+    margin-bottom: 33px;
   }
 
   .portfolio__grid {
