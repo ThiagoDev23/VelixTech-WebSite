@@ -19,8 +19,13 @@
      needs enough vertical room that flex centering alone stops reliably
      providing 76px+ of clearance well before a screen is short enough to
      match those tiers (e.g. a plain 1920x900 window). Tall viewports are
-     unaffected since centering already clears 84px there on its own. */
-  padding: 84px 24px 90px;
+     unaffected since centering already clears 84px there on its own.
+     Bottom padding is kept modest (rather than a bigger decorative value)
+     so it doesn't eat into the budget the height tiers below need to keep
+     the grid close to its full flat size on an ordinary laptop screen -
+     tall viewports don't notice either way since centering already adds
+     far more breathing room there than this value would. */
+  padding: 84px 24px 24px;
 }
 
 .portfolio__bgwrap {
@@ -64,12 +69,12 @@
 .portfolio__grid {
   position: relative;
   width: 100%;
-  /* Scales with viewport width (instead of a flat 662px that took up a
-     shrinking share of the page the wider the screen got) so the grid
-     keeps the same visual proportion at any width - clamped so it
-     never gets cramped just above the single-column breakpoint or
-     absurdly large on an ultra-wide monitor. */
-  max-width: clamp(480px, 50vw, 1400px);
+  /* A flat size (bigger than the old 662px, not tied to viewport width)
+     so the grid looks the same size on every screen wide enough to show
+     it - "width: 100%" already makes it shrink to fit on its own once
+     the available width drops below this, so nothing extra is needed
+     for that; only actually-short viewports (below) pull it smaller. */
+  max-width: 950px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -106,34 +111,25 @@
 
 /* The grid's cards keep their aspect-ratio, so shrinking the grid's own
    max-width also shrinks their height - on a short-but-wide window (a
-   non-maximized browser, limited vertical resolution) the full-size
+   non-maximized browser, limited vertical resolution) the full 950px
    grid doesn't fit and the bottom row gets cut off, so scale it down
-   whenever the viewport is short, independent of width. Each tier below
-   uses min(50vw, Nvh) instead of a flat px value so the grid still
-   scales with width first and only gets pulled smaller by height once
-   height is the tighter constraint - matching the un-tiered rule's own
-   width-driven scaling instead of snapping to one fixed size for every
-   width once a screen is merely "short". A comfortably tall viewport
-   never matches any of these, so it's untouched. Placed before the
+   whenever the viewport is short, independent of width. The formula
+   below is the exact point at which the title + grid + padding + the
+   70px footer add up to the viewport height (solved from the grid's own
+   aspect-ratio math), not an arbitrarily-conservative fraction - so it
+   only ever shrinks the grid as much as actually needed to avoid a
+   scrollbar, keeping it close to the full flat size on an ordinary
+   laptop screen instead of snapping down early. A comfortably tall
+   viewport never matches this, so it's untouched. Placed before the
    width-based rules below so a narrow screen's own max-width always
    wins regardless of height (source order, equal specificity). */
-@media (max-height: 1040px) {
-  .portfolio__grid {
-    max-width: clamp(480px, min(50vw, 76vh), 1400px);
-  }
-}
-
-@media (max-height: 820px) {
-  .portfolio {
-    padding: 84px 24px 24px;
-  }
-
+@media (max-height: 895px) {
   .portfolio__title {
     margin-bottom: 20px;
   }
 
   .portfolio__grid {
-    max-width: clamp(380px, min(50vw, 58vh), 1400px);
+    max-width: clamp(380px, calc(155.461vh - 441px), 950px);
     gap: 16px;
   }
 
@@ -143,16 +139,12 @@
 }
 
 @media (max-height: 560px) {
-  .portfolio {
-    padding: 84px 24px 16px;
-  }
-
   .portfolio__title {
     margin-bottom: 12px;
   }
 
   .portfolio__grid {
-    max-width: clamp(280px, min(50vw, 48vh), 1400px);
+    max-width: clamp(280px, calc(155.461vh - 398px), 950px);
     gap: 10px;
   }
 
