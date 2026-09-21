@@ -19,25 +19,20 @@ const icons = { tiktok: tiktokIcon, instagram: instagramIcon, linkedin: linkedin
 export default function Footer({ variant = "light", forwardedRef }) {
   return (
     <footer ref={forwardedRef} className={`footer footer--${variant}`}>
-      <div className="footer__row">
-        <Link to="/politica-de-privacidade.html" className="footer__legal-link footer__legal-link--left">
-          Política de Privacidade
-        </Link>
-
-        <div className="footer__social">
-          <a href={LINKS.tiktok} target="_blank" rel="noopener noreferrer" className="footer__icon" style={{ WebkitMaskImage: `url(${icons.tiktok})`, maskImage: `url(${icons.tiktok})` }} aria-label="TikTok" />
-          <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="footer__icon" style={{ WebkitMaskImage: `url(${icons.instagram})`, maskImage: `url(${icons.instagram})` }} aria-label="Instagram" />
-          <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="footer__icon" style={{ WebkitMaskImage: `url(${icons.linkedin})`, maskImage: `url(${icons.linkedin})` }} aria-label="LinkedIn" />
-        </div>
-
-        <Link to="/termos-de-uso.html" className="footer__legal-link footer__legal-link--right">
-          Termos de Uso
-        </Link>
+      <div className="footer__social">
+        <a href={LINKS.tiktok} target="_blank" rel="noopener noreferrer" className="footer__icon" style={{ WebkitMaskImage: `url(${icons.tiktok})`, maskImage: `url(${icons.tiktok})` }} aria-label="TikTok" />
+        <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="footer__icon" style={{ WebkitMaskImage: `url(${icons.instagram})`, maskImage: `url(${icons.instagram})` }} aria-label="Instagram" />
+        <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="footer__icon" style={{ WebkitMaskImage: `url(${icons.linkedin})`, maskImage: `url(${icons.linkedin})` }} aria-label="LinkedIn" />
       </div>
-
       <span className="footer__copy">
         <span className="footer__wordmark">ＶＥＬＩＸ</span> © 2026
       </span>
+
+      <nav className="footer__legal">
+        <Link to="/politica-de-privacidade.html">Política de Privacidade</Link>
+        <span className="footer__legal-sep" aria-hidden="true">·</span>
+        <Link to="/termos-de-uso.html">Termos de Uso</Link>
+      </nav>
     </footer>
   );
 }
