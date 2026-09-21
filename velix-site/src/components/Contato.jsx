@@ -112,7 +112,7 @@ const Contato = forwardRef(function Contato(_props, ref) {
             disabled={status === "sending"}
             className={`contato__submit ${status === "sent" ? "contato__submit--success" : ""} ${status === "error" ? "contato__submit--error" : ""}`}
           >
-            {status === "sent" ? "Enviado com sucesso!" : status === "error" ? "Falha ao enviar" : "ENVIAR"}
+            {status === "sent" ? "Enviado com sucesso!" : status === "error" ? "Falha ao enviar" : "Enviar"}
           </button>
         </form>
       </div>
