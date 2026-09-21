@@ -1,9 +1,13 @@
 import { forwardRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import contactBg from "../assets/contact-bg.png";
 import whatsappIcon from "../assets/whatsapp.png";
 import "./Contato.css";
 
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/YOUR_FORM_ID";
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ADMIN = import.meta.env.VITE_EMAILJS_TEMPLATE_ADMIN;
+const EMAILJS_TEMPLATE_CONFIRM = import.meta.env.VITE_EMAILJS_TEMPLATE_CONFIRM;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const WHATSAPP_LINK = "https://wa.link/zni9fc";
 
 const EMPTY_FORM = { nome: "", email: "", tel: "", msg: "" };
@@ -33,18 +37,16 @@ const Contato = forwardRef(function Contato(_props, ref) {
     }
 
     setStatus("sending");
+    const params = { nome: form.nome, email: form.email, telefone: form.tel, mensagem: form.msg };
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          nome: form.nome,
-          email: form.email,
-          telefone: form.tel,
-          mensagem: form.msg,
-        }),
-      });
-      if (!res.ok) throw new Error("request failed");
+      // Sent together, but only the admin notification has to succeed for the
+      // submission to count - the confirmation to the visitor is best-effort
+      // so a bad address on their end doesn't make a real lead look failed.
+      const [adminResult] = await Promise.allSettled([
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ADMIN, params, EMAILJS_PUBLIC_KEY),
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRM, params, EMAILJS_PUBLIC_KEY),
+      ]);
+      if (adminResult.status === "rejected") throw adminResult.reason;
       setForm(EMPTY_FORM);
       setErrors({});
       setStatus("sent");
