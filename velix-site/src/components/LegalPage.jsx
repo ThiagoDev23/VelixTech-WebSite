@@ -27,6 +27,13 @@ function usePageMeta(title, description) {
 export default function LegalPage({ title, description, updated, children }) {
   usePageMeta(title, description);
 
+  // A route change doesn't reset the browser's own scroll position, so
+  // arriving here from a footer link (usually clicked near the bottom of a
+  // scrolled page) landed partway down this page instead of at the top.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="legal-page">
       {/* Solid background (unlike Portfolio's transparent one) because this
