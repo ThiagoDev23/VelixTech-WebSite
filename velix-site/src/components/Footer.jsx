@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import tiktokIcon from "../assets/social-c-white.png";
 import instagramIcon from "../assets/social-b-white.png";
 import linkedinIcon from "../assets/social-linkedin-white.png";
@@ -26,6 +27,12 @@ export default function Footer({ variant = "light", forwardedRef }) {
       <span className="footer__copy">
         <span className="footer__wordmark">ＶＥＬＩＸ</span> © 2026
       </span>
+
+      <nav className="footer__legal">
+        <Link to="/politica-de-privacidade.html">Política de Privacidade</Link>
+        <span className="footer__legal-sep" aria-hidden="true">·</span>
+        <Link to="/termos-de-uso.html">Termos de Uso</Link>
+      </nav>
     </footer>
   );
 }
