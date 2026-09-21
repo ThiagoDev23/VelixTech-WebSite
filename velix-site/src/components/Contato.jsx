@@ -108,7 +108,6 @@ const Contato = forwardRef(function Contato(_props, ref) {
           <button type="submit" disabled={status === "sending"}>ENVIAR</button>
 
           <span className={`contato__status contato__status--${status}`}>
-            {status === "sent" && "Mensagem enviada! Entraremos em contato em breve."}
             {status === "error" && "Não foi possível enviar agora. Tente novamente."}
           </span>
         </form>

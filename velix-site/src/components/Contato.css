@@ -221,10 +221,6 @@ textarea.field__input {
   text-align: center;
 }
 
-.contato__status--sent {
-  color: rgb(99, 255, 33);
-}
-
 .contato__status--error {
   color: #ff4d4d;
 }
