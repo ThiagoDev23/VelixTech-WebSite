@@ -38,13 +38,16 @@ const Contato = forwardRef(function Contato(_props, ref) {
 
     setStatus("sending");
     const params = { nome: form.nome, email: form.email, telefone: form.tel, mensagem: form.msg };
+    // TEMPORARY - forces every send to fail so the "Falha ao enviar" button
+    // state can be tested live. Remove this line once testing is done.
+    const TEST_SERVICE_ID = "TEST_FORCED_FAILURE";
     try {
       // Sent together, but only the admin notification has to succeed for the
       // submission to count - the confirmation to the visitor is best-effort
       // so a bad address on their end doesn't make a real lead look failed.
       const [adminResult] = await Promise.allSettled([
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ADMIN, params, EMAILJS_PUBLIC_KEY),
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRM, params, EMAILJS_PUBLIC_KEY),
+        emailjs.send(TEST_SERVICE_ID, EMAILJS_TEMPLATE_ADMIN, params, EMAILJS_PUBLIC_KEY),
+        emailjs.send(TEST_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRM, params, EMAILJS_PUBLIC_KEY),
       ]);
       if (adminResult.status === "rejected") throw adminResult.reason;
       setForm(EMPTY_FORM);
