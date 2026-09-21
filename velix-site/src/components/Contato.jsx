@@ -107,11 +107,13 @@ const Contato = forwardRef(function Contato(_props, ref) {
           <textarea id="msg" placeholder="Mensagem..." value={form.msg} onChange={setField("msg")} className={errClass("msg")} />
           <span className="field__error">{errors.msg ? "Campo obrigatório" : ""}</span>
 
-          <button type="submit" disabled={status === "sending"}>ENVIAR</button>
-
-          <span className={`contato__status contato__status--${status}`}>
-            {status === "error" && "Não foi possível enviar agora. Tente novamente."}
-          </span>
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className={`contato__submit ${status === "sent" ? "contato__submit--success" : ""} ${status === "error" ? "contato__submit--error" : ""}`}
+          >
+            {status === "sent" ? "Enviado com sucesso!" : status === "error" ? "Falha ao enviar" : "ENVIAR"}
+          </button>
         </form>
       </div>
     </section>

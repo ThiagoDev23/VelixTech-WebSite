@@ -200,7 +200,7 @@ textarea.field__input {
   letter-spacing: 0.02em;
   color: #ffffff;
   cursor: pointer;
-  transition: background 160ms ease;
+  transition: background 160ms ease, border-color 160ms ease;
 }
 
 .contato__form button:hover {
@@ -212,17 +212,27 @@ textarea.field__input {
   cursor: default;
 }
 
-.contato__status {
-  display: block;
-  min-height: 16px;
-  margin-top: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
+/* Briefly recolors the submit button itself to confirm what happened,
+   instead of a separate status line - reverts to the default purple
+   once the "idle" timeout (see Contato.jsx) resets the status. The extra
+   "button" in each selector matches ".contato__form button" above's own
+   specificity, since a bare class there would otherwise lose to it. */
+.contato__form button.contato__submit--success {
+  background: #1f9d55;
+  border-color: #1f9d55;
 }
 
-.contato__status--error {
-  color: #ff4d4d;
+.contato__form button.contato__submit--success:hover {
+  background: #1f9d55;
+}
+
+.contato__form button.contato__submit--error {
+  background: var(--error);
+  border-color: var(--error);
+}
+
+.contato__form button.contato__submit--error:hover {
+  background: var(--error);
 }
 
 /* Stacking to a single column is purely a width call - a short-but-wide
@@ -312,11 +322,6 @@ textarea.field__input {
     margin-top: 4px;
     height: 40px;
   }
-
-  .contato__status {
-    min-height: 14px;
-    margin-top: 6px;
-  }
 }
 
 /* The stacked column's own gap only makes sense once actually
@@ -396,11 +401,6 @@ textarea.field__input {
   .contato__form button {
     margin-top: 1px;
     height: 30px;
-  }
-
-  .contato__status {
-    min-height: 10px;
-    margin-top: 2px;
   }
 }
 
