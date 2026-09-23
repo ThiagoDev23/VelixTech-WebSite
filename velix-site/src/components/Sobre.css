@@ -232,11 +232,17 @@
   }
 
   /* cqw sizing above is calibrated for the desktop canvas only - mobile
-     uses the pattern at native size, positioned like the reference design. */
+     uses a dedicated portrait-oriented artwork, covering the section and
+     centered so its crossing lines land in the middle regardless of how
+     tall the stacked cards make the section on any given phone. */
   .sobre__bg {
-    width: 1818px;
-    height: 841px;
-    left: -83px;
-    top: -49px;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    object-position: center;
   }
 }

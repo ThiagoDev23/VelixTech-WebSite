@@ -68,6 +68,13 @@
 
   .hero__content {
     position: static;
+    /* .hero__video is position:absolute, so without an explicit
+       stacking order it paints ABOVE this static content regardless of
+       DOM order, washing the white title/subtitle out through the
+       video's 0.4 opacity - z-index applies to flex items (.hero is a
+       flex container) even without position:relative, so this alone
+       fixes it without disturbing the layout. */
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;

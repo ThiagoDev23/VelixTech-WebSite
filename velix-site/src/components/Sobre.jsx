@@ -1,5 +1,6 @@
 import { forwardRef, useState } from "react";
 import tracosBg from "../assets/tracos-bg.png";
+import tracosBgMobile from "../assets/tracos-bg-mobile.png";
 import office from "../assets/office.jpg";
 import officeMobile from "../assets/office-mobile.jpg";
 import windowDots from "../assets/window-dots.png";
@@ -39,7 +40,10 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
   return (
     <section ref={ref} id="sobre" className="sobre">
       <div className="sobre__bgwrap">
-        <img src={tracosBg} alt="" className="sobre__bg" aria-hidden="true" />
+        <picture>
+          <source media="(max-width: 1023px)" srcSet={tracosBgMobile} />
+          <img src={tracosBg} alt="" className="sobre__bg" aria-hidden="true" />
+        </picture>
       </div>
 
       <div className="sobre__inner">
