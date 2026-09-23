@@ -101,6 +101,36 @@
   opacity: 0.35;
 }
 
+@media (max-width: 1023px) {
+  .footer {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 10px 0 16px;
+  }
+
+  .footer__icon {
+    width: 44px;
+    height: 44px;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .footer__icon--tiktok {
+    -webkit-mask-size: 34px;
+    mask-size: 34px;
+  }
+
+  .footer__icon--instagram {
+    -webkit-mask-size: 24px;
+    mask-size: 24px;
+  }
+
+  .footer__icon--linkedin {
+    -webkit-mask-size: 31px;
+    mask-size: 31px;
+  }
+}
+
 @media (max-width: 480px) {
   .footer__legal {
     gap: 6px;

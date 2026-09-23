@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
+import PortfolioCarousel from "../components/PortfolioCarousel.jsx";
 import portfolioBg from "../assets/portfolio-bg.png";
 import "./PortfolioPage.css";
 
@@ -25,6 +26,11 @@ export default function PortfolioPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="portfolio__carousels">
+          <PortfolioCarousel label="Web sites" slideCount={2} autoplayDelay={0} />
+          <PortfolioCarousel label="Sistemas SaaS" slideCount={2} autoplayDelay={900} />
         </div>
       </section>
 

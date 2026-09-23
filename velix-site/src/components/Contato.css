@@ -235,6 +235,16 @@ textarea.field__input {
   background: var(--error);
 }
 
+/* Centered mobile column per the design handoff - page background shows
+   through outside 480px on tablet-width viewports between 480 and 1023px. */
+@media (max-width: 1023px) {
+  .contato {
+    max-width: 480px;
+    margin: 0 auto;
+    scroll-margin-top: 64px;
+  }
+}
+
 /* Stacking to a single column is purely a width call - a short-but-wide
    window should keep the desktop's side-by-side layout, just at a more
    compact size (below). */

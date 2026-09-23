@@ -72,6 +72,7 @@
   flex: 1 1 361px;
   max-width: 361px;
   border-radius: 20px;
+  background-image: var(--photo-desktop);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -174,9 +175,22 @@
   line-height: 1.3;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
+  .sobre {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 88px 16px 48px;
+    scroll-margin-top: 64px;
+  }
+
   .sobre__inner {
     flex-direction: column;
+    padding: 0;
+    gap: 14px;
+  }
+
+  .sobre__cards {
+    gap: 14px;
   }
 
   .sobre__cards,
@@ -184,25 +198,45 @@
     max-width: 100%;
   }
 
+  /* Attached photo is landscape (not the desktop portrait crop), so a
+     shorter fixed strip reads correctly instead of the tall desktop box. */
   .sobre__photo {
-    height: 260px;
+    height: 220px;
     order: -1;
+    background-image: var(--photo-mobile);
+    background-position: center 40%;
   }
-}
 
-@media (max-width: 480px) {
+  /* Card must never grow when opened on mobile - text is sized to fit
+     the closed 145px card instead (see .card__long overrides below). */
   .card {
-    height: auto;
-    min-height: 145px;
+    height: 145px;
   }
 
   .card__short {
     font-size: 16px;
   }
 
-  /* Down to phone widths the "Quem somos?" paragraph needs considerably
-     more room than 165px - up to ~270px of text alone at 320px wide. */
-  .card:has(.card__overlay--bottom.is-open) {
-    min-height: 320px;
+  .card__long {
+    font-size: 11.5px;
+    line-height: 1.25;
+  }
+
+  .card__overlay--bottom .card__long {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .card__overlay--bottom {
+    padding: 26px 20px 8px;
+  }
+
+  /* cqw sizing above is calibrated for the desktop canvas only - mobile
+     uses the pattern at native size, positioned like the reference design. */
+  .sobre__bg {
+    width: 1818px;
+    height: 841px;
+    left: -83px;
+    top: -49px;
   }
 }

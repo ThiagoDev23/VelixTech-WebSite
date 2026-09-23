@@ -1,0 +1,94 @@
+.pcarousel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pcarousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.pcarousel__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(64, 14, 88);
+}
+
+.pcarousel__counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+
+.pcarousel__track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px;
+  padding: 2px 20px 4px;
+  scrollbar-width: none;
+}
+
+.pcarousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.pcarousel__slide {
+  position: relative;
+  flex: 0 0 82%;
+  scroll-snap-align: start;
+  height: 203.206px;
+  border-radius: 10px;
+  background: rgba(90, 90, 90, 0.1);
+  box-shadow: inset 0 0 0 1px rgb(64, 14, 88);
+}
+
+.pcarousel__slide-inner {
+  position: absolute;
+  inset: 15px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgb(64, 14, 88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.pcarousel__slide-text {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000;
+}
+
+.pcarousel__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.pcarousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  border: none;
+  padding: 0;
+  background: rgba(64, 14, 88, 0.25);
+  cursor: pointer;
+  transition: width 280ms ease, background-color 280ms ease;
+}
+
+.pcarousel__dot.is-active {
+  width: 20px;
+  background: rgb(64, 14, 88);
+}

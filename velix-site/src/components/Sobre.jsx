@@ -1,6 +1,7 @@
 import { forwardRef, useState } from "react";
 import tracosBg from "../assets/tracos-bg.png";
 import office from "../assets/office.jpg";
+import officeMobile from "../assets/office-mobile.jpg";
 import windowDots from "../assets/window-dots.png";
 import "./Sobre.css";
 
@@ -61,7 +62,10 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
           ))}
         </div>
 
-        <div className="sobre__photo" style={{ backgroundImage: `url(${office})` }} />
+        <div
+          className="sobre__photo"
+          style={{ "--photo-desktop": `url(${office})`, "--photo-mobile": `url(${officeMobile})` }}
+        />
       </div>
     </section>
   );
