@@ -44,11 +44,11 @@ export default function HomePage() {
 
     // Keeps Safari's own status bar / Dynamic Island tint matching
     // whatever section is currently at the top, instead of the static
-    // fallback color set in index.html for the very first paint.
+    // fallback color set in index.html for the very first paint. Hero
+    // uses #14041c (not its own flat charcoal CSS background) to match
+    // the video's actual average color instead of a plain neutral gray.
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) {
-      meta.setAttribute("content", current.isContato ? "#14041c" : current.theme === "dark" ? "#1e1e1e" : "#ffffff");
-    }
+    if (meta) meta.setAttribute("content", current.theme === "dark" ? "#14041c" : "#ffffff");
   }, []);
 
   useEffect(() => {

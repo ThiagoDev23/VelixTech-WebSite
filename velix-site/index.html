@@ -15,9 +15,11 @@
     <!-- Safari tints its own status bar / Dynamic Island area to match this
          instead of leaving a plain default block there; kept in sync with
          whatever section is at the top of the viewport via HomePage.jsx's
-         existing scroll-tracked theme state (falls back to the Hero's own
-         dark color here for the very first paint, before that JS runs). -->
-    <meta name="theme-color" content="#1e1e1e" />
+         existing scroll-tracked theme state. #14041c (not the flat charcoal
+         .hero itself uses) matches the actual average color of the video's
+         own top edge, which is what's visibly behind the status bar on
+         first paint, before that JS runs. -->
+    <meta name="theme-color" content="#14041c" />
     <meta name="description" content="VELIX — Soluções tecnológicas para empresas. Websites, SaaS e gestão de tráfego." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
