@@ -8,6 +8,11 @@
   --card-bg: rgb(217, 217, 217);
   --card-bg-hover: rgb(185, 185, 185);
   --error: #ff4d4d;
+  /* Mobile navbar's own height (64px, see Navbar.css's <1024px block) plus
+     the device's notch/Dynamic Island inset, if any (0 everywhere else) -
+     shared so every section that clears the fixed navbar (padding-top,
+     scroll-margin-top) stays consistent with it. */
+  --mobile-navbar-h: calc(64px + env(safe-area-inset-top, 0px));
   color-scheme: light;
 }
 

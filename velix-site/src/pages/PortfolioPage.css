@@ -175,9 +175,10 @@
     margin: 0 auto;
     background: #ffffff;
     justify-content: flex-start;
-    padding: 166px 0 44px;
+    padding: 0 0 44px;
+    padding-top: calc(var(--mobile-navbar-h) + 102px);
     gap: 40px;
-    scroll-margin-top: 64px;
+    scroll-margin-top: var(--mobile-navbar-h);
   }
 
   .portfolio__bg {
@@ -196,7 +197,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    top: 64px;
+    top: var(--mobile-navbar-h);
     z-index: 50;
     max-width: 480px;
     margin: 0 auto;

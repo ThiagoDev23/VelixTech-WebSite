@@ -180,7 +180,7 @@
     max-width: 480px;
     margin: 0 auto;
     padding: 88px 16px 48px;
-    scroll-margin-top: 64px;
+    scroll-margin-top: var(--mobile-navbar-h);
   }
 
   .sobre__inner {

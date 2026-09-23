@@ -241,7 +241,7 @@ textarea.field__input {
   .contato {
     max-width: 480px;
     margin: 0 auto;
-    scroll-margin-top: 64px;
+    scroll-margin-top: var(--mobile-navbar-h);
   }
 }
 
