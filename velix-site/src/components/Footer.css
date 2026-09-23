@@ -105,39 +105,39 @@
   .footer {
     max-width: 480px;
     margin: 0 auto;
-    padding: 8px 0 12px;
-    gap: 8px;
+    padding: 6px 0 8px;
+    gap: 5px;
   }
 
-  /* A bit above the desktop footer's plain 24px glyphs for touch comfort,
-     but nowhere near the 44px spec value, which read as an oversized bar
-     next to the rest of the (compact) mobile footer. The box height must
-     match the mask-size reservation or the icon overflows into the gap
-     below, crowding the copyright line again. */
+  /* Slightly above the desktop footer's plain 24px glyphs, but kept
+     compact overall - the box height must match the mask-size
+     reservation or the icon overflows into the gap below, crowding the
+     copyright line again. */
   .footer__social {
-    height: 30px;
+    height: 26px;
+    gap: 12px;
   }
 
   .footer__icon {
-    width: 30px;
-    height: 30px;
-    -webkit-mask-size: 20px;
-    mask-size: 20px;
-  }
-
-  .footer__icon--tiktok {
-    -webkit-mask-size: 20px;
-    mask-size: 20px;
-  }
-
-  .footer__icon--instagram {
+    width: 26px;
+    height: 26px;
     -webkit-mask-size: 17px;
     mask-size: 17px;
   }
 
+  .footer__icon--tiktok {
+    -webkit-mask-size: 17px;
+    mask-size: 17px;
+  }
+
+  .footer__icon--instagram {
+    -webkit-mask-size: 14px;
+    mask-size: 14px;
+  }
+
   .footer__icon--linkedin {
-    -webkit-mask-size: 19px;
-    mask-size: 19px;
+    -webkit-mask-size: 16px;
+    mask-size: 16px;
   }
 }
 

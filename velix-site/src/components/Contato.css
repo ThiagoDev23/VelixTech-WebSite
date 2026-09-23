@@ -281,7 +281,7 @@ textarea.field__input {
    untouched. */
 @media (max-width: 900px), (max-height: 960px) {
   .contato {
-    padding: 84px 24px 24px;
+    padding: 72px 24px 24px;
   }
 
   .contato__heading {
@@ -289,7 +289,7 @@ textarea.field__input {
   }
 
   .contato__body {
-    margin-top: 24px;
+    margin-top: 18px;
   }
 
   .contato__info-title {
@@ -354,7 +354,7 @@ textarea.field__input {
    to noticeably more height per pixel of available space. */
 @media (max-width: 480px), (max-height: 700px) {
   .contato {
-    padding: 84px 24px 16px;
+    padding: 72px 24px 16px;
   }
 
   .contato__heading {
@@ -370,7 +370,7 @@ textarea.field__input {
   }
 
   .contato__body {
-    margin-top: 12px;
+    margin-top: 8px;
   }
 
   .contato__info-title {

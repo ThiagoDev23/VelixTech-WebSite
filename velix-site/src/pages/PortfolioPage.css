@@ -200,7 +200,7 @@
     z-index: 50;
     max-width: 480px;
     margin: 0 auto;
-    background: #ffffff;
+    background: transparent;
     padding: 18px 20px 14px;
     font-size: 38px;
     line-height: 1.1;

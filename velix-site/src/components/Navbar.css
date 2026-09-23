@@ -180,8 +180,12 @@
     left: -4px;
   }
 
+  /* The hexagon glyph in the logo PNG isn't perfectly centered in its own
+     332x330 canvas - it renders visually higher than the box's geometric
+     center, so the wordmark needs a matching upward nudge to align with
+     it, not just with the logo's bounding box. */
   .navbar__wordmark {
-    top: 22px;
+    top: 18px;
     font-size: 20px;
     line-height: 24px;
   }
