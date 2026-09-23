@@ -105,29 +105,39 @@
   .footer {
     max-width: 480px;
     margin: 0 auto;
-    padding: 10px 0 16px;
+    padding: 10px 0 18px;
+    gap: 12px;
+  }
+
+  /* Keeps the same 24px glyph size the desktop footer already uses (for
+     visual harmony between the two), just inside a taller 44px tap target
+     for touch - the extra height must be reserved here too, or the icons
+     overflow .footer__social's box and eat into the gap below, crowding
+     the copyright line. */
+  .footer__social {
+    height: 44px;
   }
 
   .footer__icon {
     width: 44px;
     height: 44px;
-    -webkit-mask-size: contain;
-    mask-size: contain;
-  }
-
-  .footer__icon--tiktok {
-    -webkit-mask-size: 34px;
-    mask-size: 34px;
-  }
-
-  .footer__icon--instagram {
     -webkit-mask-size: 24px;
     mask-size: 24px;
   }
 
+  .footer__icon--tiktok {
+    -webkit-mask-size: 24px;
+    mask-size: 24px;
+  }
+
+  .footer__icon--instagram {
+    -webkit-mask-size: 21px;
+    mask-size: 21px;
+  }
+
   .footer__icon--linkedin {
-    -webkit-mask-size: 31px;
-    mask-size: 31px;
+    -webkit-mask-size: 23px;
+    mask-size: 23px;
   }
 }
 

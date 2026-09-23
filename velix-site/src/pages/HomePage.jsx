@@ -17,6 +17,7 @@ export default function HomePage() {
   const [theme, setTheme] = useState("dark");
   const [scrolled, setScrolled] = useState(false);
   const [inContato, setInContato] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ export default function HomePage() {
     setTheme(current.theme);
     setInContato(!!current.isContato);
     setScrolled(window.scrollY > 8);
+    setIsMobile(window.innerWidth < 1024);
   }, []);
 
   useEffect(() => {
@@ -80,8 +82,26 @@ export default function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state]);
 
-  const navBg = !scrolled || inContato ? "transparent" : theme === "dark" ? "rgba(22,10,30,0.92)" : "rgba(255,255,255,0.94)";
-  const navShadow = scrolled && !inContato ? "0 1px 24px rgba(0,0,0,0.18)" : "none";
+  // Desktop keeps the navbar transparent over Contato (unchanged); on
+  // mobile it instead tints to the Contato background's own color, since
+  // that's what the mobile design handoff calls for.
+  const mobileInContato = inContato && isMobile;
+  const navBg = !scrolled
+    ? "transparent"
+    : mobileInContato
+      ? "rgba(20,4,28,0.95)"
+      : inContato
+        ? "transparent"
+        : theme === "dark"
+          ? "rgba(22,10,30,0.92)"
+          : "rgba(255,255,255,0.94)";
+  const navShadow = !scrolled
+    ? "none"
+    : mobileInContato
+      ? "0 1px 18px rgba(0,0,0,0.28)"
+      : !inContato
+        ? "0 1px 24px rgba(0,0,0,0.18)"
+        : "none";
 
   return (
     <div className="home">

@@ -175,7 +175,7 @@
     margin: 0 auto;
     background: #ffffff;
     justify-content: flex-start;
-    padding: 100px 0 44px;
+    padding: 166px 0 44px;
     gap: 40px;
     scroll-margin-top: 64px;
   }
@@ -189,10 +189,21 @@
     object-fit: cover;
   }
 
+  /* Stays fixed below the navbar while the carousels scroll underneath -
+     position:fixed (not sticky) sidesteps .portfolio's own overflow:hidden,
+     which would otherwise break sticky positioning. */
   .portfolio__title {
-    margin: 0;
-    padding: 0 20px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 64px;
+    z-index: 50;
+    max-width: 480px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 18px 20px 14px;
     font-size: 38px;
+    line-height: 1.1;
   }
 
   .portfolio__grid {
