@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import PortfolioCarousel from "../components/PortfolioCarousel.jsx";
@@ -7,6 +8,14 @@ import "./PortfolioPage.css";
 const PLACEHOLDER_TEXT = "Ainda não temos projetos disponível no momento.";
 
 export default function PortfolioPage() {
+  // Matches Safari's status bar / Dynamic Island tint to this page's own
+  // (always white/light) background, same mechanism as HomePage's
+  // per-section version.
+  useEffect(() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", "#ffffff");
+  }, []);
+
   return (
     <div className="portfolio-page">
       <Navbar theme="light" background="transparent" boxShadow="none" />

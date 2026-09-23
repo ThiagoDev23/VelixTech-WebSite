@@ -41,6 +41,14 @@ export default function HomePage() {
     setInContato(!!current.isContato);
     setScrolled(window.scrollY > 8);
     setIsMobile(window.innerWidth < 1024);
+
+    // Keeps Safari's own status bar / Dynamic Island tint matching
+    // whatever section is currently at the top, instead of the static
+    // fallback color set in index.html for the very first paint.
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+      meta.setAttribute("content", current.isContato ? "#14041c" : current.theme === "dark" ? "#1e1e1e" : "#ffffff");
+    }
   }, []);
 
   useEffect(() => {
