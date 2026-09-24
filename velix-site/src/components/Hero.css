@@ -90,6 +90,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Still centered by .hero's own justify-content:center (the
+       "middle" reference point), just nudged up 30% of its own height
+       from there per request - transform doesn't affect layout flow,
+       so this doesn't disturb the flex centering math itself. */
+    transform: translateY(-30%);
   }
 
   .hero__title {
