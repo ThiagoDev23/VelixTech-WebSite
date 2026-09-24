@@ -115,7 +115,7 @@
      copyright line again. */
   .footer__social {
     height: 26px;
-    gap: 12px;
+    gap: 8px;
   }
 
   .footer__icon {
@@ -138,6 +138,25 @@
   .footer__icon--linkedin {
     -webkit-mask-size: 16px;
     mask-size: 16px;
+  }
+
+  /* A dark glyph on a light background optically reads as thinner/smaller
+     than the same shape light-on-dark (the portfolio footer's own
+     black-background variant) - sized up slightly here to compensate so
+     both footers carry the same visual weight. */
+  .footer--light .footer__icon--tiktok {
+    -webkit-mask-size: 19px;
+    mask-size: 19px;
+  }
+
+  .footer--light .footer__icon--instagram {
+    -webkit-mask-size: 16px;
+    mask-size: 16px;
+  }
+
+  .footer--light .footer__icon--linkedin {
+    -webkit-mask-size: 18px;
+    mask-size: 18px;
   }
 }
 
