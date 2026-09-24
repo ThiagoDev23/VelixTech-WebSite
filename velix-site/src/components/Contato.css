@@ -443,8 +443,16 @@ textarea.field__input {
    without touching the width>1023px desktop rules above, or the
    height-only "short wide window" rules' own behavior above that. */
 @media (max-width: 1023px) {
+  /* Bottom padding is a real, guaranteed gap to the footer now, not
+     leftover space from .contato's own viewport-height-based min-height
+     minus its content - that surplus shrinks to nothing (or even
+     disappears) whenever the real device's available height is shorter
+     than assumed (e.g. Safari's toolbar still expanded), which is
+     exactly what made the gap collapse on a real phone despite testing
+     fine here. A fixed reference value scaled only by --mscale (width,
+     not height) stays consistent no matter the viewport's height. */
   .contato {
-    padding: var(--mobile-navbar-h) calc(24px * var(--mscale)) calc(4px * var(--mscale));
+    padding: var(--mobile-navbar-h) calc(24px * var(--mscale)) calc(48px * var(--mscale));
   }
 
   .contato__heading {
@@ -481,22 +489,23 @@ textarea.field__input {
     margin-top: calc(3px * var(--mscale));
   }
 
-  /* Height bumped 20% (30px -> 36px reference) per request, keeping
-     margin-top (spacing to the label above/below) untouched. */
+  /* Height already bumped 20% (30px -> 36px) last round; grown further
+     here (both width and height, +~15% on top of that) per request,
+     keeping margin-top untouched. */
   .contato__whatsapp {
     margin-top: calc(6px * var(--mscale));
-    width: min(calc(260px * var(--mscale)), 100%);
-    height: calc(36px * var(--mscale));
-    gap: calc(14px * var(--mscale));
+    width: min(calc(299px * var(--mscale)), 100%);
+    height: calc(41.4px * var(--mscale));
+    gap: calc(16px * var(--mscale));
   }
 
   .contato__whatsapp img {
-    width: calc(26px * var(--mscale));
-    height: calc(26px * var(--mscale));
+    width: calc(30px * var(--mscale));
+    height: calc(30px * var(--mscale));
   }
 
   .contato__whatsapp span {
-    font-size: calc(18px * var(--mscale));
+    font-size: calc(21px * var(--mscale));
   }
 
   .contato__form label {
