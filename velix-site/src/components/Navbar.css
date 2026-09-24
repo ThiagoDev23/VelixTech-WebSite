@@ -72,13 +72,19 @@
   background-size: contain;
 }
 
+/* Was full-width Unicode characters (ＶＥＬＩＸ) for the spread-out look,
+   but Inter has no glyphs in that block, so every browser silently fell
+   back to a system default font instead - different per OS, which is
+   exactly why desktop and mobile (different devices) showed visibly
+   different fonts here. Plain ASCII + a bigger letter-spacing reproduces
+   the same spacing while actually rendering in Inter everywhere. */
 .navbar__wordmark {
   position: absolute;
   top: 19.7px; /* 24px from navbar top - 4.3px brand offset */
   font-size: 24px;
   font-weight: 800;
   line-height: 29px;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.5em;
   cursor: pointer;
   white-space: nowrap;
 }
