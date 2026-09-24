@@ -176,7 +176,7 @@
     background: #ffffff;
     justify-content: flex-start;
     padding: 0 0 calc(44px * var(--mscale));
-    padding-top: calc(var(--mobile-navbar-h) + 102px * var(--mscale));
+    padding-top: calc(var(--mobile-navbar-h) + 24px * var(--mscale));
     gap: calc(40px * var(--mscale));
     scroll-margin-top: var(--mobile-navbar-h);
   }
@@ -190,19 +190,11 @@
     object-fit: cover;
   }
 
-  /* Stays fixed below the navbar while the carousels scroll underneath -
-     position:fixed (not sticky) sidesteps .portfolio's own overflow:hidden,
-     which would otherwise break sticky positioning. */
+  /* Back to normal document flow - scrolls away with the rest of the
+     page instead of staying pinned under the navbar, per request. */
   .portfolio__title {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: var(--mobile-navbar-h);
-    z-index: 50;
-    max-width: 480px;
-    margin: 0 auto;
-    background: transparent;
-    padding: calc(18px * var(--mscale)) calc(20px * var(--mscale)) calc(14px * var(--mscale));
+    margin: 0;
+    padding: 0 calc(20px * var(--mscale));
     font-size: calc(38px * var(--mscale));
     line-height: 1.1;
   }

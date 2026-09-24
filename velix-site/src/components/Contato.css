@@ -481,10 +481,12 @@ textarea.field__input {
     margin-top: calc(3px * var(--mscale));
   }
 
+  /* Height bumped 20% (30px -> 36px reference) per request, keeping
+     margin-top (spacing to the label above/below) untouched. */
   .contato__whatsapp {
     margin-top: calc(6px * var(--mscale));
     width: min(calc(260px * var(--mscale)), 100%);
-    height: calc(30px * var(--mscale));
+    height: calc(36px * var(--mscale));
     gap: calc(14px * var(--mscale));
   }
 
@@ -502,13 +504,12 @@ textarea.field__input {
     font-size: calc(13px * var(--mscale));
   }
 
-  /* Height scales with everything else, but font-size stays a flat 16px
-     (set in the unconditional .field__input rule above, untouched here)
-     - iOS Safari auto-zooms the page when a focused input's font is
-     smaller than that, which would fight the very scaling this block
-     exists to control. */
+  /* Height bumped 20% (24px -> 28.8px reference) per request - font-size
+     stays a flat 16px regardless (set in the unconditional .field__input
+     rule above, untouched here) since iOS Safari auto-zooms the page
+     when a focused input's font is smaller than that. */
   .field__input {
-    height: calc(24px * var(--mscale));
+    height: calc(28.8px * var(--mscale));
   }
 
   textarea.field__input {
@@ -521,9 +522,11 @@ textarea.field__input {
     font-size: calc(12px * var(--mscale));
   }
 
+  /* Height bumped 20% (28px -> 33.6px reference) per request, keeping
+     margin-top untouched. */
   .contato__form button {
     margin-top: calc(1px * var(--mscale));
-    height: calc(28px * var(--mscale));
+    height: calc(33.6px * var(--mscale));
     font-size: calc(18px * var(--mscale));
   }
 }
