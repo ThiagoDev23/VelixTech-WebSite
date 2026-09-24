@@ -67,6 +67,17 @@
     scroll-margin-top: var(--mobile-navbar-h);
   }
 
+  /* The video's own content only lives in two far corners (top-left and
+     bottom-right of the 2520x1080 frame) - the entire middle is empty
+     black. On a narrow phone, object-fit:cover's default centered crop
+     shows a thin vertical slice from right around that empty middle,
+     which read as a plain black background instead of the animated
+     pattern. Shifting the crop toward the corner that stays lit longest
+     across the loop keeps something visible at all times. */
+  .hero__video {
+    object-position: 20% 50%;
+  }
+
   .hero__content {
     position: static;
     /* .hero__video is position:absolute, so without an explicit
