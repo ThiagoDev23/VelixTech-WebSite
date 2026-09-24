@@ -59,10 +59,25 @@ export default function HomePage() {
     schedule();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
+
+    // Safari only actually applies the theme-color meta tag's value to its
+    // status bar / Dynamic Island after some scroll/repaint happens - it
+    // ignores it on the very first paint even though the tag is already
+    // correct by then. A 1px nudge (immediately reversed, so it's not
+    // visible or felt) forces that repaint without the user needing to
+    // scroll themselves first.
+    const nudge = window.setTimeout(() => {
+      if (window.scrollY === 0) {
+        window.scrollTo(0, 1);
+        requestAnimationFrame(() => window.scrollTo(0, 0));
+      }
+    }, 300);
+
     return () => {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       if (raf != null) cancelAnimationFrame(raf);
+      window.clearTimeout(nudge);
     };
   }, [measure]);
 
