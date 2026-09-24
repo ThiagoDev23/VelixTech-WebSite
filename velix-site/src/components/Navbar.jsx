@@ -71,7 +71,7 @@ export default function Navbar({ theme = "light", background = "transparent", bo
           <nav className={`navbar__links ${dark ? "navbar__links--dark" : "navbar__links--light"}`}>
             <span onClick={goHome}>HOME</span>
             <span onClick={goSobre}>SOBRE</span>
-            <span onClick={goPortfolio}>PORTFOLIO</span>
+            <span onClick={goPortfolio}>PORTFÓLIO</span>
             <span onClick={goContato}>CONTATO</span>
           </nav>
         </div>
@@ -100,7 +100,7 @@ export default function Navbar({ theme = "light", background = "transparent", bo
         <nav className="menu-overlay__links">
           <span onClick={() => handleMenuNav(goHome)}>HOME</span>
           <span onClick={() => handleMenuNav(goSobre)}>SOBRE</span>
-          <span onClick={() => handleMenuNav(goPortfolio)}>PORTFOLIO</span>
+          <span onClick={() => handleMenuNav(goPortfolio)}>PORTFÓLIO</span>
           <span onClick={() => handleMenuNav(goContato)}>CONTATO</span>
         </nav>
 
