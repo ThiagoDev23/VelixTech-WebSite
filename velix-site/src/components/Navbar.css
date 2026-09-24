@@ -169,9 +169,14 @@
     left: 8px;
   }
 
+  /* Width grown 20% (52px -> 62px) per request - height stays tied to
+     the navbar's own fixed height. The glyph is roughly square, so
+     width is what actually constrains its rendered size under
+     background-size:contain (it's the smaller of the two box
+     dimensions), meaning this alone grows the visible icon ~20%. */
   .navbar__logo--dark,
   .navbar__logo--light {
-    width: 52px;
+    width: 62px;
     height: 64px;
     background-size: contain;
   }
@@ -192,7 +197,7 @@
 
   .navbar__brand--dark .navbar__wordmark,
   .navbar__brand--light .navbar__wordmark {
-    left: 56px;
+    left: 66px;
     margin-left: -4px;
   }
 

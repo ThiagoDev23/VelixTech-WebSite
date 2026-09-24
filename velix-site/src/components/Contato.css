@@ -499,13 +499,16 @@ textarea.field__input {
     gap: calc(16px * var(--mscale));
   }
 
+  /* Icon/text sized back down independently of the button's own (now
+     larger) box, per request - only these two shrink, not the button
+     itself. */
   .contato__whatsapp img {
-    width: calc(30px * var(--mscale));
-    height: calc(30px * var(--mscale));
+    width: calc(22px * var(--mscale));
+    height: calc(22px * var(--mscale));
   }
 
   .contato__whatsapp span {
-    font-size: calc(21px * var(--mscale));
+    font-size: calc(16px * var(--mscale));
   }
 
   .contato__form label {

@@ -42,7 +42,7 @@ export default function LegalPage({ title, description, updated, children }) {
       <Navbar theme="light" background="rgba(255,255,255,0.96)" boxShadow="0 1px 24px rgba(0,0,0,0.08)" />
 
       <main className="legal">
-        <Link to="/" className="legal__back">
+        <Link to="/" className="legal__back" onClick={() => window.scrollTo(0, 0)}>
           ← Voltar para a página inicial
         </Link>
 
@@ -51,7 +51,7 @@ export default function LegalPage({ title, description, updated, children }) {
 
         <div className="legal__content">{children}</div>
 
-        <Link to="/" className="legal__back legal__back--bottom">
+        <Link to="/" className="legal__back legal__back--bottom" onClick={() => window.scrollTo(0, 0)}>
           ← Voltar para a página inicial
         </Link>
       </main>
