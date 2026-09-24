@@ -513,7 +513,7 @@ textarea.field__input {
   }
 
   .contato__form label {
-    margin-bottom: calc(1px * var(--mscale));
+    margin-bottom: calc(5px * var(--mscale));
     font-size: calc(13px * var(--mscale));
   }
 
@@ -531,7 +531,7 @@ textarea.field__input {
 
   .field__error {
     height: calc(8px * var(--mscale));
-    margin-bottom: calc(2px * var(--mscale));
+    margin-bottom: calc(7px * var(--mscale));
     font-size: calc(12px * var(--mscale));
   }
 
