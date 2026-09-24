@@ -1,0 +1,11 @@
+[build]
+  base = "velix-site"
+  # Install explicitly (including devDependencies, where vite lives) before
+  # building: this deploy path doesn't reliably run an automatic install step.
+  command = "npm ci --include=dev && npm run build"
+  publish = "dist"
+
+[build.environment]
+  # vite lives in devDependencies; without this, npm skips it when
+  # NODE_ENV=production is set for the build, causing "vite: not found".
+  NPM_FLAGS = "--include=dev"
