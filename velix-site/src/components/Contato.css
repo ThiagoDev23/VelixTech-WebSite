@@ -428,3 +428,102 @@ textarea.field__input {
   font-size: 20px;
   font-weight: 500;
 }
+
+/* All the phone-tier values above were tuned by testing at ~390px wide
+   and written as fixed px, so on a wider phone (430px, iPhone Pro Max)
+   they read as comfortably spaced, but on a narrower one (360-390px)
+   the exact same fixed sizes eat up proportionally more of the screen
+   and look "zoomed in" - confirmed by measuring the WhatsApp button
+   alone taking 60% of a 430px-wide screen vs 66% of a 393px-wide one.
+   This final tier re-expresses every one of those sizes as a multiple
+   of --mscale (defined in index.css, 1 at 430px width and down to 0.8
+   at ~344px), so the whole section scales together and reads the same
+   proportionally at any phone width - it wins the cascade for any
+   width <=1023px (later in the file, equal or higher specificity)
+   without touching the width>1023px desktop rules above, or the
+   height-only "short wide window" rules' own behavior above that. */
+@media (max-width: 1023px) {
+  .contato {
+    padding: var(--mobile-navbar-h) calc(24px * var(--mscale)) calc(4px * var(--mscale));
+  }
+
+  .contato__heading {
+    gap: calc(2px * var(--mscale));
+  }
+
+  .contato__heading h2 {
+    font-size: calc(26px * var(--mscale));
+  }
+
+  .contato__heading p {
+    font-size: calc(13px * var(--mscale));
+  }
+
+  .contato__body {
+    margin-top: calc(2px * var(--mscale));
+  }
+
+  .contato__info-title {
+    font-size: calc(20px * var(--mscale));
+  }
+
+  .contato__label {
+    margin-top: calc(5px * var(--mscale));
+    font-size: calc(15px * var(--mscale));
+  }
+
+  .contato__label--center {
+    margin-top: calc(6px * var(--mscale));
+    font-size: calc(20px * var(--mscale));
+  }
+
+  .contato__value {
+    margin-top: calc(3px * var(--mscale));
+  }
+
+  .contato__whatsapp {
+    margin-top: calc(6px * var(--mscale));
+    width: min(calc(260px * var(--mscale)), 100%);
+    height: calc(30px * var(--mscale));
+    gap: calc(14px * var(--mscale));
+  }
+
+  .contato__whatsapp img {
+    width: calc(26px * var(--mscale));
+    height: calc(26px * var(--mscale));
+  }
+
+  .contato__whatsapp span {
+    font-size: calc(18px * var(--mscale));
+  }
+
+  .contato__form label {
+    margin-bottom: calc(1px * var(--mscale));
+    font-size: calc(13px * var(--mscale));
+  }
+
+  /* Height scales with everything else, but font-size stays a flat 16px
+     (set in the unconditional .field__input rule above, untouched here)
+     - iOS Safari auto-zooms the page when a focused input's font is
+     smaller than that, which would fight the very scaling this block
+     exists to control. */
+  .field__input {
+    height: calc(24px * var(--mscale));
+  }
+
+  textarea.field__input {
+    height: calc(70px * var(--mscale));
+  }
+
+  .field__error {
+    height: calc(8px * var(--mscale));
+    margin-bottom: calc(2px * var(--mscale));
+    font-size: calc(12px * var(--mscale));
+  }
+
+  .contato__form button {
+    margin-top: calc(1px * var(--mscale));
+    height: calc(28px * var(--mscale));
+    font-size: calc(18px * var(--mscale));
+  }
+}

@@ -13,6 +13,18 @@
      shared so every section that clears the fixed navbar (padding-top,
      scroll-margin-top) stays consistent with it. */
   --mobile-navbar-h: calc(64px + env(safe-area-inset-top, 0px));
+  /* Every mobile size (fonts, buttons, spacing) was tuned against a 430px-
+     wide phone (iPhone 14/15/16 Pro Max) and written as a fixed px value,
+     so on a narrower phone (390px, 360px...) those same fixed sizes eat up
+     a bigger share of the screen and read as "zoomed in" compared to the
+     wider phone, even though the layout is pixel-identical. Multiplying a
+     reference size by this factor (calc(REFpx * var(--mscale))) scales it
+     down proportionally instead - min(1, ...) keeps it from exceeding the
+     430px reference on wider mobile/tablet viewports in the same
+     <1024px breakpoint, and max(0.8, ...) floors it so text doesn't get
+     illegibly small below ~344px. Inert (=1) at any desktop width, since
+     it's only ever referenced inside each component's own <1024px block. */
+  --mscale: max(0.8, min(1, calc(100vw / 430px)));
   color-scheme: light;
 }
 

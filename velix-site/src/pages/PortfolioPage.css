@@ -175,9 +175,9 @@
     margin: 0 auto;
     background: #ffffff;
     justify-content: flex-start;
-    padding: 0 0 44px;
-    padding-top: calc(var(--mobile-navbar-h) + 102px);
-    gap: 40px;
+    padding: 0 0 calc(44px * var(--mscale));
+    padding-top: calc(var(--mobile-navbar-h) + 102px * var(--mscale));
+    gap: calc(40px * var(--mscale));
     scroll-margin-top: var(--mobile-navbar-h);
   }
 
@@ -202,8 +202,8 @@
     max-width: 480px;
     margin: 0 auto;
     background: transparent;
-    padding: 18px 20px 14px;
-    font-size: 38px;
+    padding: calc(18px * var(--mscale)) calc(20px * var(--mscale)) calc(14px * var(--mscale));
+    font-size: calc(38px * var(--mscale));
     line-height: 1.1;
   }
 
@@ -215,6 +215,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: calc(40px * var(--mscale));
   }
 }

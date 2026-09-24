@@ -62,7 +62,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px 20px 24px;
+    padding: calc(20px * var(--mscale)) calc(20px * var(--mscale)) calc(24px * var(--mscale));
     padding-top: var(--mobile-navbar-h);
     scroll-margin-top: var(--mobile-navbar-h);
   }
@@ -84,9 +84,9 @@
   .hero__title {
     position: static;
     padding: 0;
-    font-size: 46px;
+    font-size: calc(46px * var(--mscale));
     line-height: 0.98;
-    letter-spacing: -1.85px;
+    letter-spacing: calc(-1.85px * var(--mscale));
     text-wrap: balance;
   }
 
@@ -96,9 +96,9 @@
     top: auto;
     transform: none;
     width: 100%;
-    max-width: 330px;
-    margin-top: 22px;
-    font-size: 16px;
+    max-width: calc(330px * var(--mscale));
+    margin-top: calc(22px * var(--mscale));
+    font-size: calc(16px * var(--mscale));
     line-height: 1.3;
   }
 }
