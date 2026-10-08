@@ -6,6 +6,7 @@ import contactBg from "../assets/contact-bg.png";
 import tiktokIcon from "../assets/social-c-white.png";
 import instagramIcon from "../assets/social-b-white.png";
 import linkedinIcon from "../assets/social-linkedin-white.png";
+import { smoothScrollBehavior } from "../utils/motion.js";
 import "./Navbar.css";
 
 const SOCIAL_LINKS = {
@@ -29,7 +30,7 @@ export default function Navbar({ theme = "light", background = "transparent", bo
       window.scrollTo(0, 0);
       navigate("/");
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: smoothScrollBehavior() });
     }
   };
 

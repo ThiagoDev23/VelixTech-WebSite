@@ -142,6 +142,22 @@
   flex-direction: column;
 }
 
+/* Transparent to layout (its label/input/error children lay out exactly as
+   if they were still direct flex children of .contato__form) - it exists
+   only so `disabled` can cascade to every field at once while sending. */
+.contato__fieldset {
+  display: contents;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contato__fieldset:disabled .field__input,
+.contato__fieldset[disabled] .field__input {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .contato__form label {
   margin-bottom: 5px;
   font-size: 15px;

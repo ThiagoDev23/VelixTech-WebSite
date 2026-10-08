@@ -78,3 +78,18 @@ video {
   display: block;
   max-width: 100%;
 }
+
+/* Blanket transition/animation kill-switch for anyone who's asked their OS
+   not to animate things - individual async flows (Hero's looping video,
+   the Portfolio carousel's autoplay) also check this in JS, since those
+   aren't CSS transitions and need their own opt-out. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

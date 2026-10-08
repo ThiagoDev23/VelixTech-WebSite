@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { prefersReducedMotion } from "../utils/motion.js";
 import "./PortfolioCarousel.css";
 
 const PLACEHOLDER_TEXT = "Ainda não temos projetos disponível no momento.";
@@ -57,6 +58,9 @@ export default function PortfolioCarousel({ label, slideCount = 2, autoplayDelay
   }, []);
 
   useEffect(() => {
+    // An indefinitely auto-advancing carousel is exactly the kind of motion
+    // this preference exists to opt out of - skip starting it entirely.
+    if (prefersReducedMotion()) return;
     let intervalId = null;
     const startTimeout = setTimeout(() => {
       intervalId = setInterval(() => {

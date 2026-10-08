@@ -5,6 +5,7 @@ import Hero from "../components/Hero.jsx";
 import Sobre from "../components/Sobre.jsx";
 import Contato from "../components/Contato.jsx";
 import Footer from "../components/Footer.jsx";
+import { smoothScrollBehavior } from "../utils/motion.js";
 
 const NAV_POINT = 40; // roughly the vertical center of the 76px fixed navbar
 
@@ -91,7 +92,7 @@ export default function HomePage() {
   // Contato + Footer together are always at least one viewport tall,
   // so this never needs to scroll back up into Sobre.
   const scrollToContato = useCallback(() => {
-    footerRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    footerRef.current?.scrollIntoView({ behavior: smoothScrollBehavior(), block: "end" });
   }, []);
 
   useEffect(() => {
@@ -99,7 +100,7 @@ export default function HomePage() {
     if (!target) return;
     requestAnimationFrame(() => {
       if (target === "contato") scrollToContato();
-      else if (target === "sobre") sobreRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      else if (target === "sobre") sobreRef.current?.scrollIntoView({ behavior: smoothScrollBehavior(), block: "start" });
     });
     navigate(".", { replace: true, state: {} });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -132,8 +133,8 @@ export default function HomePage() {
         theme={theme}
         background={navBg}
         boxShadow={navShadow}
-        onHome={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        onSobre={() => sobreRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+        onHome={() => window.scrollTo({ top: 0, behavior: smoothScrollBehavior() })}
+        onSobre={() => sobreRef.current?.scrollIntoView({ behavior: smoothScrollBehavior(), block: "start" })}
         onContato={scrollToContato}
       />
       <Hero ref={heroRef} />

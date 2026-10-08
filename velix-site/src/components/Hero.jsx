@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useRef } from "react";
 import heroVideo from "../assets/hero-bg.mp4";
 import heroPoster from "../assets/hero-bg.png";
+import { prefersReducedMotion } from "../utils/motion.js";
 import "./Hero.css";
 
 const Hero = forwardRef(function Hero(_props, ref) {
@@ -11,6 +12,10 @@ const Hero = forwardRef(function Hero(_props, ref) {
     if (!v) return;
     v.muted = true;
     v.loop = true;
+    // Respect the OS-level preference: never start the looping background
+    // animation at all, so the static poster frame (already set via the
+    // poster attribute below) is what stays on screen.
+    if (prefersReducedMotion()) return;
     const play = () => {
       const p = v.play();
       if (p && p.catch) p.catch(() => {});
@@ -40,10 +45,10 @@ const Hero = forwardRef(function Hero(_props, ref) {
         ref={videoRef}
         src={heroVideo}
         poster={heroPoster}
-        autoPlay
         muted
         loop
         playsInline
+        aria-hidden="true"
         className="hero__video"
       />
       <div className="hero__content">

@@ -25,6 +25,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
     <title>Velix Tech</title>
+    <style>
+      /* Covers the gap between first paint and the JS bundle finishing
+         download+parse+execute - on a slow connection that can otherwise be
+         several seconds of a plain blank dark screen with zero feedback.
+         Inlined (not in an external stylesheet) so it renders even if the
+         app's own CSS hasn't loaded yet. createRoot().render() in main.jsx
+         replaces #root's entire contents the moment React mounts, which
+         removes this automatically - no cleanup JS needed. */
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0d0d0d;
+      }
+      .initial-loader__spinner {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.15);
+        border-top-color: rgb(187, 44, 255);
+        animation: initial-loader-spin 0.8s linear infinite;
+      }
+      @keyframes initial-loader-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .initial-loader__spinner {
+          animation: none;
+          opacity: 0.6;
+        }
+      }
+    </style>
     <script>
       // Restore the original path after the 404.html redirect trick (GitHub Pages SPA fallback).
       (function (l) {
@@ -42,7 +78,11 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="initial-loader" aria-hidden="true">
+        <div class="initial-loader__spinner"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
