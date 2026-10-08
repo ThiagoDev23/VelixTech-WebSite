@@ -1,9 +1,10 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import tracosBg from "../assets/tracos-bg.png";
 import tracosBgMobile from "../assets/tracos-bg-mobile.png";
 import office from "../assets/office.jpg";
 import officeMobile from "../assets/office-mobile.jpg";
 import windowDots from "../assets/window-dots.png";
+import { prefersReducedMotion } from "../utils/motion.js";
 import "./Sobre.css";
 
 const CARDS = [
@@ -34,8 +35,43 @@ const CARDS = [
   },
 ];
 
+// Staggered per card index, so they reveal one after another instead of
+// all snapping in at once.
+const REVEAL_DELAYS_MS = [0, 90, 180, 270];
+const PHOTO_REVEAL_DELAY_MS = 150;
+
 const Sobre = forwardRef(function Sobre(_props, ref) {
   const [open, setOpen] = useState(null);
+  const revealRefs = useRef([]);
+
+  useEffect(() => {
+    const targets = revealRefs.current.filter(Boolean);
+    if (targets.length === 0) return;
+
+    // Reduced motion, or no IntersectionObserver support (very old
+    // browsers): skip the scroll-triggered reveal entirely and show
+    // everything immediately - otherwise content would be stuck at
+    // opacity:0 with nothing left to ever make it visible.
+    if (prefersReducedMotion() || typeof IntersectionObserver === "undefined") {
+      targets.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          // One-time reveal - once shown, stays shown on scroll-up instead
+          // of re-animating every time it crosses the viewport edge.
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+    );
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section ref={ref} id="sobre" className="sobre">
@@ -54,8 +90,12 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
             return (
               <button
                 key={card.title}
+                ref={(el) => {
+                  revealRefs.current[i] = el;
+                }}
                 type="button"
                 className="card"
+                style={{ "--reveal-delay": `${REVEAL_DELAYS_MS[i] ?? 0}ms` }}
                 onClick={() => setOpen((prev) => (prev === i ? null : i))}
                 aria-expanded={isOpen}
                 aria-controls={panelId}
@@ -83,8 +123,15 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
         </div>
 
         <div
+          ref={(el) => {
+            revealRefs.current[CARDS.length] = el;
+          }}
           className="sobre__photo"
-          style={{ "--photo-desktop": `url(${office})`, "--photo-mobile": `url(${officeMobile})` }}
+          style={{
+            "--photo-desktop": `url(${office})`,
+            "--photo-mobile": `url(${officeMobile})`,
+            "--reveal-delay": `${PHOTO_REVEAL_DELAY_MS}ms`,
+          }}
         />
       </div>
     </section>

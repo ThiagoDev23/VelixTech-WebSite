@@ -76,6 +76,16 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  /* Same scroll-reveal treatment as the cards - see .card above. */
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 650ms ease, transform 650ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.sobre__photo.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Now a <button> (was a bare div) so the whole card is keyboard/screen-reader
@@ -92,13 +102,24 @@
   border-radius: 10px;
   background: rgb(217, 217, 217);
   cursor: pointer;
-  transition: background 180ms ease;
   padding: 24px 28px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  /* Scroll reveal: starts faded/offset, animates in once it crosses into
+     the viewport (see the IntersectionObserver in Sobre.jsx). --reveal-delay
+     staggers the four cards one after another instead of all at once. */
+  opacity: 0;
+  transform: translateY(28px);
+  transition: background 180ms ease, opacity 650ms ease, transform 650ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover {
