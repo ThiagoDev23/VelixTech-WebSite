@@ -83,6 +83,10 @@
   transition-delay: var(--reveal-delay, 0ms);
 }
 
+.sobre__photo.reveal-from-top {
+  transform: translateY(-28px);
+}
+
 .sobre__photo.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -108,13 +112,21 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  /* Scroll reveal: starts faded/offset, animates in once it crosses into
-     the viewport (see the IntersectionObserver in Sobre.jsx). --reveal-delay
+  /* Scroll reveal: starts faded/offset, animates in every time it crosses
+     into the viewport (see the IntersectionObserver in Sobre.jsx), and
+     fades back out when it leaves so it can replay. --reveal-delay
      staggers the four cards one after another instead of all at once. */
   opacity: 0;
   transform: translateY(28px);
   transition: background 180ms ease, opacity 650ms ease, transform 650ms ease;
   transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Set when the scroll that revealed this element was upward (e.g. coming
+   back up from Contato) - slides down into place instead of up, mirroring
+   which edge of the screen the content is actually entering from. */
+.card.reveal-from-top {
+  transform: translateY(-28px);
 }
 
 .card.is-visible {

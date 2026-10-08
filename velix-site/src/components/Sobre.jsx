@@ -43,6 +43,21 @@ const PHOTO_REVEAL_DELAY_MS = 150;
 const Sobre = forwardRef(function Sobre(_props, ref) {
   const [open, setOpen] = useState(null);
   const revealRefs = useRef([]);
+  // Read inside the IntersectionObserver callback below, not via React
+  // state - scroll fires far too often to re-render on, and the callback
+  // only needs this value at the instant each element crosses the edge.
+  const scrollDirRef = useRef("down");
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y !== lastY) scrollDirRef.current = y > lastY ? "down" : "up";
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const targets = revealRefs.current.filter(Boolean);
@@ -60,14 +75,30 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          // One-time reveal - once shown, stays shown on scroll-up instead
-          // of re-animating every time it crosses the viewport edge.
-          observer.unobserve(entry.target);
+          const el = entry.target;
+          const i = Number(el.dataset.revealIndex);
+          const isPhoto = i === CARDS.length;
+
+          if (entry.isIntersecting) {
+            // Coming from below (scrolling up, e.g. back from Contato) -
+            // mirror both the stagger order (last card first) and the
+            // slide direction (down into place instead of up), so the
+            // reveal visually matches which edge the content is entering
+            // from. Re-runs every time, not just the first pass.
+            const scrollingUp = scrollDirRef.current === "up";
+            el.classList.toggle("reveal-from-top", scrollingUp);
+            const delay = isPhoto
+              ? PHOTO_REVEAL_DELAY_MS
+              : REVEAL_DELAYS_MS[scrollingUp ? CARDS.length - 1 - i : i];
+            el.style.setProperty("--reveal-delay", `${delay}ms`);
+            el.classList.add("is-visible");
+          } else {
+            el.style.setProperty("--reveal-delay", "0ms");
+            el.classList.remove("is-visible");
+          }
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0.2, rootMargin: "-10% 0px -10% 0px" }
     );
     targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -93,9 +124,9 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
                 ref={(el) => {
                   revealRefs.current[i] = el;
                 }}
+                data-reveal-index={i}
                 type="button"
                 className="card"
-                style={{ "--reveal-delay": `${REVEAL_DELAYS_MS[i] ?? 0}ms` }}
                 onClick={() => setOpen((prev) => (prev === i ? null : i))}
                 aria-expanded={isOpen}
                 aria-controls={panelId}
@@ -126,11 +157,11 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
           ref={(el) => {
             revealRefs.current[CARDS.length] = el;
           }}
+          data-reveal-index={CARDS.length}
           className="sobre__photo"
           style={{
             "--photo-desktop": `url(${office})`,
             "--photo-mobile": `url(${officeMobile})`,
-            "--reveal-delay": `${PHOTO_REVEAL_DELAY_MS}ms`,
           }}
         />
       </div>
