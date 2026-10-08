@@ -20,9 +20,9 @@ export default function Footer({ variant = "light", forwardedRef }) {
   return (
     <footer ref={forwardedRef} className={`footer footer--${variant}`}>
       <div className="footer__social">
-        <a href={LINKS.tiktok} target="_blank" rel="noopener noreferrer" className="footer__icon footer__icon--tiktok" style={{ WebkitMaskImage: `url(${icons.tiktok})`, maskImage: `url(${icons.tiktok})` }} aria-label="TikTok" />
-        <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="footer__icon footer__icon--instagram" style={{ WebkitMaskImage: `url(${icons.instagram})`, maskImage: `url(${icons.instagram})` }} aria-label="Instagram" />
-        <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="footer__icon footer__icon--linkedin" style={{ WebkitMaskImage: `url(${icons.linkedin})`, maskImage: `url(${icons.linkedin})` }} aria-label="LinkedIn" />
+        <a href={LINKS.tiktok} target="_blank" rel="noopener noreferrer" className="footer__icon footer__icon--tiktok" style={{ WebkitMaskImage: `url(${icons.tiktok})`, maskImage: `url(${icons.tiktok})` }} aria-label="Abrir o TikTok da VELIX em uma nova aba" />
+        <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="footer__icon footer__icon--instagram" style={{ WebkitMaskImage: `url(${icons.instagram})`, maskImage: `url(${icons.instagram})` }} aria-label="Abrir o Instagram da VELIX em uma nova aba" />
+        <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="footer__icon footer__icon--linkedin" style={{ WebkitMaskImage: `url(${icons.linkedin})`, maskImage: `url(${icons.linkedin})` }} aria-label="Abrir o LinkedIn da VELIX em uma nova aba" />
       </div>
       <span className="footer__copy">
         <span className="footer__wordmark">ＶＥＬＩＸ</span> © 2026

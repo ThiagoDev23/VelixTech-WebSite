@@ -8,6 +8,11 @@
   --card-bg: rgb(217, 217, 217);
   --card-bg-hover: rgb(185, 185, 185);
   --error: #ff4d4d;
+  /* Shared keyboard-focus ring, reusing the purple already established by
+     the Contato form inputs (see Contato.css's .field__input:focus), so
+     every newly-focusable control (nav buttons, cards, social icons...)
+     gets the same visual language instead of each inventing its own. */
+  --focus-ring: 0 0 0 2px rgb(187, 44, 255);
   /* Mobile navbar's own height (64px, see Navbar.css's <1024px block) plus
      the device's notch/Dynamic Island inset, if any (0 everywhere else) -
      shared so every section that clears the fixed navbar (padding-top,

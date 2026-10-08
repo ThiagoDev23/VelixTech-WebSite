@@ -72,17 +72,20 @@ export default function PortfolioCarousel({ label, slideCount = 2, autoplayDelay
   }, [autoplayDelay, slideCount, scrollToIndex]);
 
   return (
-    <div className="pcarousel">
+    <div className="pcarousel" role="region" aria-roledescription="carrossel" aria-label={label}>
       <div className="pcarousel__header">
         <span className="pcarousel__label">{label}</span>
-        <span className="pcarousel__counter">
+        {/* Redundant with each slide's own "n de N" aria-label below and
+            with the dots' aria-current - hidden from AT so position isn't
+            announced three times over for the same information. */}
+        <span className="pcarousel__counter" aria-hidden="true">
           {String(active + 1).padStart(2, "0")} / {String(slideCount).padStart(2, "0")}
         </span>
       </div>
 
       <div className="pcarousel__track" ref={trackRef}>
         {Array.from({ length: slideCount }).map((_, i) => (
-          <div key={i} className="pcarousel__slide">
+          <div key={i} className="pcarousel__slide" role="group" aria-roledescription="slide" aria-label={`${i + 1} de ${slideCount}`}>
             <div className="pcarousel__slide-inner">
               <span className="pcarousel__slide-text">{PLACEHOLDER_TEXT}</span>
             </div>
@@ -96,7 +99,8 @@ export default function PortfolioCarousel({ label, slideCount = 2, autoplayDelay
             key={i}
             type="button"
             className={`pcarousel__dot ${i === active ? "is-active" : ""}`}
-            aria-label={`Ir para o slide ${i + 1}`}
+            aria-label={`Ir para o slide ${i + 1} de ${slideCount}`}
+            aria-current={i === active ? "true" : undefined}
             onClick={() => scrollToIndex(i)}
           />
         ))}

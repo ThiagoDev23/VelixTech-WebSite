@@ -51,13 +51,27 @@
   left: 20px;
 }
 
+/* Now a <button> (was a bare div) so it's keyboard/screen-reader reachable -
+   these resets strip the native button chrome (border/background/padding)
+   that would otherwise show through around the background-image. */
 .navbar__logo {
   position: absolute;
   top: 0;
   left: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+}
+
+.navbar__logo:focus-visible,
+.navbar__wordmark:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 4px;
 }
 
 .navbar__logo--dark {
@@ -78,9 +92,15 @@
    exactly why desktop and mobile (different devices) showed visibly
    different fonts here. Plain ASCII + a bigger letter-spacing reproduces
    the same spacing while actually rendering in Inter everywhere. */
+/* Also a <button> now - same reset rationale as .navbar__logo above. */
 .navbar__wordmark {
   position: absolute;
   top: 19.7px; /* 24px from navbar top - 4.3px brand offset */
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  text-align: left;
   font-size: 24px;
   font-weight: 800;
   line-height: 29px;
@@ -114,28 +134,42 @@
   align-items: center;
 }
 
-.navbar__links span {
+/* Nav items are <button> elements (were bare spans - unreachable by
+   keyboard/screen reader since a span has no implicit interactive role
+   and was never in the tab order). Reset to match the old span's look. */
+.navbar__links button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
   font-size: 14px;
   font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
   transition: color 160ms ease;
 }
 
-.navbar__links--dark span {
+.navbar__links--dark button {
   color: #ffffff;
 }
 
-.navbar__links--dark span:hover {
+.navbar__links--dark button:hover {
   color: #b98cd6;
 }
 
-.navbar__links--light span {
+.navbar__links--light button {
   color: rgb(64, 14, 88);
 }
 
-.navbar__links--light span:hover {
+.navbar__links--light button:hover {
   color: #8b3fbf;
+}
+
+.navbar__links button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 4px;
 }
 
 .navbar__hamburger {
@@ -223,6 +257,12 @@
     padding: 0;
     cursor: pointer;
     z-index: 61;
+  }
+
+  .navbar__hamburger:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 8px;
   }
 
   .navbar__hamburger span {
@@ -327,6 +367,12 @@
     transform: rotate(-45deg);
   }
 
+  .menu-overlay__close:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 8px;
+  }
+
   .menu-overlay__links {
     position: relative;
     flex: 1;
@@ -337,9 +383,15 @@
     padding: 0 32px;
   }
 
-  .menu-overlay__links span {
+  /* Also <button> elements now - see .navbar__links above for why. */
+  .menu-overlay__links button {
+    border: none;
+    margin: 0;
+    background: none;
+    text-align: left;
     font-size: 26px;
     font-weight: 700;
+    font-family: inherit;
     letter-spacing: 0.06em;
     color: #ffffff;
     cursor: pointer;
@@ -347,8 +399,14 @@
     transition: color 160ms ease;
   }
 
-  .menu-overlay__links span:hover {
+  .menu-overlay__links button:hover {
     color: #b98cd6;
+  }
+
+  .menu-overlay__links button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 4px;
   }
 
   .menu-overlay__social {
@@ -374,6 +432,12 @@
 
   .menu-overlay__icon:hover {
     background-color: #b98cd6;
+  }
+
+  .menu-overlay__icon:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 4px;
   }
 
   .menu-overlay__icon--tiktok {

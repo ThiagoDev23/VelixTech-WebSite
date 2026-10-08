@@ -84,35 +84,41 @@ const Contato = forwardRef(function Contato(_props, ref) {
 
           <span className="contato__label contato__label--center">Se preferir, chame direto no WhatsApp.</span>
 
-          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="contato__whatsapp">
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="contato__whatsapp" aria-label="Chamar no WhatsApp (abre em uma nova aba)">
             <img src={whatsappIcon} alt="" />
-            <span>Chamar no WhatsApp</span>
+            <span aria-hidden="true">Chamar no WhatsApp</span>
           </a>
         </div>
 
         <form className="contato__form" onSubmit={handleSubmit} noValidate>
           <label htmlFor="nome">Nome</label>
-          <input id="nome" type="text" placeholder="Nome" value={form.nome} onChange={setField("nome")} className={errClass("nome")} />
-          <span className="field__error">{errors.nome ? "Campo obrigatório" : ""}</span>
+          <input id="nome" type="text" placeholder="Nome" value={form.nome} onChange={setField("nome")} className={errClass("nome")} aria-invalid={errors.nome ? "true" : "false"} aria-describedby="nome-error" />
+          <span id="nome-error" className="field__error" role="alert">{errors.nome ? "Campo obrigatório" : ""}</span>
 
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" placeholder="velixtech.ceo@gmail.com" value={form.email} onChange={setField("email")} className={errClass("email")} />
-          <span className="field__error">{errors.email ? "Campo obrigatório" : ""}</span>
+          <input id="email" type="email" placeholder="velixtech.ceo@gmail.com" value={form.email} onChange={setField("email")} className={errClass("email")} aria-invalid={errors.email ? "true" : "false"} aria-describedby="email-error" />
+          <span id="email-error" className="field__error" role="alert">{errors.email ? "Campo obrigatório" : ""}</span>
 
           <label htmlFor="tel">Telefone</label>
-          <input id="tel" type="tel" placeholder="+55 (61) 98255-4750" value={form.tel} onChange={setField("tel")} className={errClass("tel")} />
-          <span className="field__error">{errors.tel ? "Campo obrigatório" : ""}</span>
+          <input id="tel" type="tel" placeholder="+55 (61) 98255-4750" value={form.tel} onChange={setField("tel")} className={errClass("tel")} aria-invalid={errors.tel ? "true" : "false"} aria-describedby="tel-error" />
+          <span id="tel-error" className="field__error" role="alert">{errors.tel ? "Campo obrigatório" : ""}</span>
 
           <label htmlFor="msg">Mensagem</label>
-          <textarea id="msg" placeholder="Mensagem..." value={form.msg} onChange={setField("msg")} className={errClass("msg")} />
-          <span className="field__error">{errors.msg ? "Campo obrigatório" : ""}</span>
+          <textarea id="msg" placeholder="Mensagem..." value={form.msg} onChange={setField("msg")} className={errClass("msg")} aria-invalid={errors.msg ? "true" : "false"} aria-describedby="msg-error" />
+          <span id="msg-error" className="field__error" role="alert">{errors.msg ? "Campo obrigatório" : ""}</span>
 
+          {/* aria-live announces the Enviando.../Enviado/Falha label changes
+              to screen readers - previously only sighted users saw the
+              button's text change after submit, with no feedback at all
+              for the "sending" state (text stayed "Enviar" the whole time). */}
           <button
             type="submit"
             disabled={status === "sending"}
+            aria-live="polite"
+            aria-atomic="true"
             className={`contato__submit ${status === "sent" ? "contato__submit--success" : ""} ${status === "error" ? "contato__submit--error" : ""}`}
           >
-            {status === "sent" ? "Enviado com sucesso!" : status === "error" ? "Falha ao enviar" : "Enviar"}
+            {status === "sending" ? "Enviando..." : status === "sent" ? "Enviado com sucesso!" : status === "error" ? "Falha ao enviar" : "Enviar"}
           </button>
         </form>
       </div>

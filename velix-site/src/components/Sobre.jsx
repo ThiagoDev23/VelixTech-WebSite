@@ -48,22 +48,38 @@ const Sobre = forwardRef(function Sobre(_props, ref) {
 
       <div className="sobre__inner">
         <div className="sobre__cards">
-          {CARDS.map((card, i) => (
-            <div
-              key={card.title}
-              className="card"
-              onClick={() => setOpen((prev) => (prev === i ? null : i))}
-            >
-              <div className="card__bar" style={{ backgroundImage: `url(${windowDots})` }} />
-              <span className="card__title">{card.title}</span>
-              <span className="card__short">{card.short}</span>
+          {CARDS.map((card, i) => {
+            const isOpen = open === i;
+            const panelId = `card-panel-${i}`;
+            return (
+              <button
+                key={card.title}
+                type="button"
+                className="card"
+                onClick={() => setOpen((prev) => (prev === i ? null : i))}
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                aria-label={`${card.title} — ${isOpen ? "recolher detalhes" : "ver mais detalhes"}`}
+              >
+                <div className="card__bar" style={{ backgroundImage: `url(${windowDots})` }} aria-hidden="true" />
+                <span className="card__title" aria-hidden="true">{card.title}</span>
+                <span className="card__short" aria-hidden="true">{card.short}</span>
 
-              <div className={`card__overlay ${card.longVariant === "bottom" ? "card__overlay--bottom" : ""} ${open === i ? "is-open" : ""}`}>
-                <div className="card__bar card__bar--overlay" style={{ backgroundImage: `url(${windowDots})` }} />
-                <span className="card__long">{card.long}</span>
-              </div>
-            </div>
-          ))}
+                {/* aria-hidden so a screen reader doesn't read this text while
+                    it's visually collapsed (opacity:0) - previously both the
+                    short and long copy were always exposed regardless of
+                    toggle state, since only aria-label now carries the name. */}
+                <div
+                  id={panelId}
+                  className={`card__overlay ${card.longVariant === "bottom" ? "card__overlay--bottom" : ""} ${isOpen ? "is-open" : ""}`}
+                  aria-hidden={!isOpen}
+                >
+                  <div className="card__bar card__bar--overlay" style={{ backgroundImage: `url(${windowDots})` }} aria-hidden="true" />
+                  <span className="card__long">{card.long}</span>
+                </div>
+              </button>
+            );
+          })}
         </div>
 
         <div

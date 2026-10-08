@@ -92,3 +92,8 @@
   width: calc(20px * var(--mscale));
   background: rgb(64, 14, 88);
 }
+
+.pcarousel__dot:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}

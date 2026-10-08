@@ -48,6 +48,12 @@
   background-color: #400e58;
 }
 
+.footer__icon:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 4px;
+}
+
 .footer__copy {
   font-size: 14px;
   font-weight: 400;
