@@ -93,6 +93,13 @@
    different fonts here. Plain ASCII + a bigger letter-spacing reproduces
    the same spacing while actually rendering in Inter everywhere. */
 /* Also a <button> now - same reset rationale as .navbar__logo above. */
+/* font-weight was 800, but the Inter weights actually loaded (see
+   index.html's Google Fonts link) only go up to 700 - with no real 800
+   face to use, the browser fakes it (synthetic/faux bold), which can
+   render inconsistently across devices instead of using the real glyphs.
+   700 is an actually-loaded weight, so desktop and mobile (same rule,
+   only font-size/line-height differ per breakpoint below) now render
+   with the identical real typeface everywhere, not a synthesized one. */
 .navbar__wordmark {
   position: absolute;
   top: 19.7px; /* 24px from navbar top - 4.3px brand offset */
@@ -102,7 +109,7 @@
   background: none;
   text-align: left;
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 29px;
   letter-spacing: 0.5em;
   cursor: pointer;
