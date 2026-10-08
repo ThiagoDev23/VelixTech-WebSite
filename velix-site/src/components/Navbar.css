@@ -110,11 +110,11 @@
 }
 
 .navbar__brand--dark .navbar__wordmark {
-  left: 53px;
+  left: 57px;
 }
 
 .navbar__brand--light .navbar__wordmark {
-  left: 63px;
+  left: 67px;
 }
 
 .navbar__wordmark--dark {
@@ -238,7 +238,7 @@
   .navbar__brand--dark .navbar__wordmark,
   .navbar__brand--light .navbar__wordmark {
     left: 62px;
-    margin-left: -4px;
+    margin-left: -1px;
   }
 
   .navbar__hamburger {
