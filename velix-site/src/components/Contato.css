@@ -123,16 +123,14 @@
   box-shadow: 0 8px 24px rgba(99, 255, 33, 0.25);
 }
 
-/* Sized up slightly from 26px (26/18 ≈ 1.44x the text, which read
-   thin/undersized next to the bold label - the icon itself is a thin-
-   stroke outline, not a filled badge, so it needs more size to carry
-   the same visual weight as bold text). Nudged up+right because the
+/* 27px - a touch bigger than the original 26px, pulled back down from an
+   earlier 30px pass that read too large. Nudged up+right because the
    artwork's own visual mass sits measurably off the canvas's geometric
    center (down ~2.8%, left ~3.1%, from the speech-bubble tail at the
    bottom-left) - flexbox centers the box, not the drawing inside it. */
 .contato__whatsapp img {
-  width: 30px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
   transform: translate(1px, -1px);
 }
 
@@ -526,12 +524,13 @@ textarea.field__input {
 
   /* Icon/text sized back down independently of the button's own (now
      larger) box, per request - only these two shrink, not the button
-     itself. Bumped slightly (22px -> 25px, same ~1.15x ratio as desktop)
-     and optically nudged for the same reason as desktop's .contato__whatsapp
-     img rule above - the offset scales with --mscale like the icon itself. */
+     itself. 23px - a touch bigger than the original 22px, matching
+     desktop's pulled-back 27px (same ~1.04x ratio) - and optically
+     nudged for the same reason as desktop's .contato__whatsapp img rule
+     above, scaled with --mscale like the icon itself. */
   .contato__whatsapp img {
-    width: calc(25px * var(--mscale));
-    height: calc(25px * var(--mscale));
+    width: calc(23px * var(--mscale));
+    height: calc(23px * var(--mscale));
     transform: translate(calc(1px * var(--mscale)), calc(-1px * var(--mscale)));
   }
 
