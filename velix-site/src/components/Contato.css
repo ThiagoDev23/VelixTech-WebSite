@@ -123,15 +123,16 @@
   box-shadow: 0 8px 24px rgba(99, 255, 33, 0.25);
 }
 
-/* 27px - a touch bigger than the original 26px, pulled back down from an
-   earlier 30px pass that read too large. Nudged up+right because the
-   artwork's own visual mass sits measurably off the canvas's geometric
-   center (down ~2.8%, left ~3.1%, from the speech-bubble tail at the
-   bottom-left) - flexbox centers the box, not the drawing inside it. */
+/* 25px, pulled back down further from 27px/30px passes that read too
+   large. Nudged up+right because the artwork's own visual mass sits
+   measurably off the canvas's geometric center (down ~2.8%, left ~3.1%,
+   from the speech-bubble tail at the bottom-left) - flexbox centers the
+   box, not the drawing inside it; the rightward nudge is a bit more
+   than that offset alone per request. */
 .contato__whatsapp img {
-  width: 27px;
-  height: 27px;
-  transform: translate(1px, -1px);
+  width: 25px;
+  height: 25px;
+  transform: translate(2px, -1px);
 }
 
 .contato__whatsapp span {
@@ -524,14 +525,14 @@ textarea.field__input {
 
   /* Icon/text sized back down independently of the button's own (now
      larger) box, per request - only these two shrink, not the button
-     itself. 23px - a touch bigger than the original 22px, matching
-     desktop's pulled-back 27px (same ~1.04x ratio) - and optically
-     nudged for the same reason as desktop's .contato__whatsapp img rule
-     above, scaled with --mscale like the icon itself. */
+     itself. 21px, matching desktop's 25px (same ~0.95x ratio as the
+     original 22px) - and optically nudged for the same reason as
+     desktop's .contato__whatsapp img rule above, scaled with --mscale
+     like the icon itself. */
   .contato__whatsapp img {
-    width: calc(23px * var(--mscale));
-    height: calc(23px * var(--mscale));
-    transform: translate(calc(1px * var(--mscale)), calc(-1px * var(--mscale)));
+    width: calc(21px * var(--mscale));
+    height: calc(21px * var(--mscale));
+    transform: translate(calc(2px * var(--mscale)), calc(-1px * var(--mscale)));
   }
 
   .contato__whatsapp span {
