@@ -132,7 +132,7 @@
 .contato__whatsapp img {
   width: 25px;
   height: 25px;
-  transform: translate(2px, -1px);
+  transform: translate(3px, -1px);
 }
 
 .contato__whatsapp span {
@@ -532,7 +532,7 @@ textarea.field__input {
   .contato__whatsapp img {
     width: calc(21px * var(--mscale));
     height: calc(21px * var(--mscale));
-    transform: translate(calc(2px * var(--mscale)), calc(-1px * var(--mscale)));
+    transform: translate(calc(3px * var(--mscale)), calc(-1px * var(--mscale)));
   }
 
   .contato__whatsapp span {
